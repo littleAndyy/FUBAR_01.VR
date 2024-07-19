@@ -1,4 +1,11 @@
 enableDebugConsole = 1;
+respawnOnStart = 0;
+respawn = 3;
+respawnDelay = 0;
+respawnTemplates[] = {"ace_spectator"};
+
+enableDebugConsole = 1;
+zeusCompositionScriptLevel = 2;
 
 class CfgFunctions 
 {
@@ -18,5 +25,17 @@ class CfgFunctions
 			file = "andia\FUBAR\dust";
 			class grenadeDust {};
 		};
+	};
+};
+
+class CfgCommunicationMenu
+{
+	// private _supportRadio = [player,"andia_mortar_support"] call BIS_fnc_addCommMenuItem; 
+	class andia_mortar_support
+	{
+		text = "Mortar Firesupport (Map)"; // Text displayed in the menu and in a notification
+		expression = "[player] execVM 'andia\FUBAR\support\fn_supportMortar.sqf';"; // Code executed upon activation
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa"; // Icon displayed permanently next to the command menu
+		removeAfterExpressionCall = 0; // 1 to remove the item after calling
 	};
 };

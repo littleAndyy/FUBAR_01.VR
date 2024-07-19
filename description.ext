@@ -1,8 +1,7 @@
 enableDebugConsole = 1;
 respawnOnStart = 0;
 respawn = 3;
-respawnDelay = 0;
-respawnTemplates[] = {"ace_spectator"};
+respawnDelay = 1;
 
 enableDebugConsole = 1;
 zeusCompositionScriptLevel = 2;

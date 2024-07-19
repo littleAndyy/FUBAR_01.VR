@@ -20,6 +20,7 @@ private _ANDIA_FUBAR_SuppressedEH = _unit addEventHandler ["Suppressed", {
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
     [_unit] call andia_fnc_suppressionMain;
 }];
+_unit setVariable ["ANDIA_FUBAR_SuppressedEH", _ANDIA_FUBAR_SuppressedEH];
 
 private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["ProjectileCreated", {
 	params ["_projectile"];
@@ -94,6 +95,18 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
             [player] call andia_fnc_suppressionMain;
         };
     }];
+}];
+_unit setVariable ["ANDIA_FUBAR_Suppression_ProjectileEH", _ANDIA_FUBAR_Suppression_ProjectileEH];
+
+_unit addEventHandler ["Respawn", {
+	params ["_unit", "_corpse"];
+    _corpse removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
+    removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
+    _unit spawn {
+        sleep 3;
+        [player] call andia_fnc_suppressionEH;
+    };
+    _corpse removeEventHandler [_thisEvent, _thisEventHandler];
 }];
 
 //(1.8*((190*1.5)*0.05))/20

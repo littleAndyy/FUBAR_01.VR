@@ -1,0 +1,513 @@
+version=54;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=5;
+	mods[]=
+	{
+		"3denEnhanced"
+	};
+	class ItemIDProvider
+	{
+		nextID=7;
+	};
+	class LayerIndexProvider
+	{
+		nextID=10;
+	};
+	class Camera
+	{
+		pos[]={3497.7468,35.860744,3095.467};
+		dir[]={-0.68491715,-0.7125321,-0.15227672};
+		up[]={-0.69554925,0.70163906,-0.15464063};
+		aside[]={-0.21702987,5.0677045e-09,0.97616529};
+	};
+};
+binarizationWanted=0;
+sourceName="FUBAR_01";
+addons[]=
+{
+	"A3_Characters_F_AoW",
+	"A3_Modules_F_Curator_Curator"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Characters_F_AoW";
+			name="Arma 3 Art of War - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+dlcs[]=
+{
+	"AoW"
+};
+randomSeed=7421105;
+class ScenarioData
+{
+	author="little andy";
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="HNEG_emed_ped_session";
+		class Attribute0
+		{
+			property="HNEG_emed_ped_sessionRUN";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="HNEG_emed_ped_sessionATTNOTOOL";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=1;
+				};
+			};
+		};
+		nAttributes=2;
+	};
+};
+class Mission
+{
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+	class Entities
+	{
+		items=1;
+		class Item0
+		{
+			dataType="Layer";
+			name="(Zeus) HQ-A";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Group";
+					side="West";
+					class Entities
+					{
+						items=1;
+						class Item0
+						{
+							dataType="Object";
+							class PositionInfo
+							{
+								position[]={3472,5.0014391,3088.05};
+								angles[]={0,1.5707964,0};
+							};
+							side="West";
+							flags=7;
+							class Attributes
+							{
+								rank="LIEUTENANT";
+								name="andy1_andy";
+								description="Lt. Andy@HQ-A";
+								isPlayer=1;
+							};
+							id=1;
+							type="B_Officer_Parade_Veteran_F";
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="allowDamage";
+									expression="_this allowdamage _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=0;
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="ENH_unitTraits_engineer";
+									expression="[_this, ['Engineer', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute2
+								{
+									property="enableStamina";
+									expression="_this enablestamina _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=0;
+										};
+									};
+								};
+								class Attribute3
+								{
+									property="HNEG_emed_emtrDieout4ID";
+									expression="false";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="0";
+										};
+									};
+								};
+								class Attribute4
+								{
+									property="ENH_unitTraits_audibleCoef";
+									expression="[_this, ['AudibleCoef', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=0.5;
+										};
+									};
+								};
+								class Attribute5
+								{
+									property="face";
+									expression="_this setface _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="AsianHead_A3_06";
+										};
+									};
+								};
+								class Attribute6
+								{
+									property="ENH_unitTraits_medic";
+									expression="[_this, ['Medic', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute7
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="Male03ENGB";
+										};
+									};
+								};
+								class Attribute8
+								{
+									property="HNEG_emed_emtrDieout3ID";
+									expression="false";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="0";
+										};
+									};
+								};
+								class Attribute9
+								{
+									property="ENH_unitTrait_UAVHacker";
+									expression="[_this, ['UAVHacker', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute10
+								{
+									property="ENH_unitTraits_loadCoef";
+									expression="[_this, ['LoadCoef', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=0.1;
+										};
+									};
+								};
+								class Attribute11
+								{
+									property="HNEG_emed_emitterInit";
+									expression=" if (!is3DEN) then { _this call compile _value; }; ";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="true";
+										};
+									};
+								};
+								class Attribute12
+								{
+									property="unitName";
+									expression="_this setname _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="Andy";
+										};
+									};
+								};
+								class Attribute13
+								{
+									property="HNEG_emed_emtrDieout2ID";
+									expression="false";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="0";
+										};
+									};
+								};
+								class Attribute14
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=1.1;
+										};
+									};
+								};
+								class Attribute15
+								{
+									property="HNEG_emed_emtrDieout1ID";
+									expression="false";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="0";
+										};
+									};
+								};
+								class Attribute16
+								{
+									property="ENH_unitTraits_camouflage";
+									expression="[_this, ['CamouflageCoef', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=0.5;
+										};
+									};
+								};
+								class Attribute17
+								{
+									property="ENH_unitTrait_explosiveSpecialist";
+									expression="[_this, ['ExplosiveSpecialist', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute18
+								{
+									property="HNEG_emed_aedInit";
+									expression=" if (!is3DEN) then { _this call compile _value; }; ";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="true";
+										};
+									};
+								};
+								class Attribute19
+								{
+									property="unitInsignia";
+									expression="[_this,_value] call BIS_fnc_setUnitInsignia;";
+									class Value
+									{
+										class data
+										{
+											singleType="STRING";
+											value="";
+										};
+									};
+								};
+								nAttributes=20;
+							};
+						};
+					};
+					class Attributes
+					{
+					};
+					id=0;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="groupID";
+							expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="HQ-A";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item1
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={3472,5,3089};
+					};
+					id=2;
+					type="ModuleCurator_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ModuleCurator_F_Owner";
+							expression="_this setVariable ['Owner',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="andy1_andy";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ModuleCurator_F_Forced";
+							expression="_this setVariable ['Forced',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="ModuleCurator_F_Name";
+							expression="_this setVariable ['Name',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="";
+								};
+							};
+						};
+						class Attribute3
+						{
+							property="ModuleCurator_F_Addons";
+							expression="_this setVariable ['Addons',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=3;
+								};
+							};
+						};
+						nAttributes=4;
+					};
+				};
+			};
+			id=3;
+		};
+	};
+};

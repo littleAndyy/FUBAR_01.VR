@@ -1,0 +1,22 @@
+enableDebugConsole = 1;
+
+class CfgFunctions 
+{
+	class andia 
+	{
+		tag = "andia";
+		class FUBAR_suppression 
+		{
+			file = "andia\FUBAR\suppression";
+			class suppressionMain {};
+			class suppressionEH {};
+			class suppressionFX {};
+			class suppressionBreathing {};
+		};
+		class FUBAR_dust 
+		{
+			file = "andia\FUBAR\dust";
+			class grenadeDust {};
+		};
+	};
+};

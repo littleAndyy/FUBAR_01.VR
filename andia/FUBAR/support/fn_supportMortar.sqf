@@ -10,7 +10,7 @@ private _delay = 300;
 if (!isNil {_cooldown}) exitWith {
     {
         if (side _x == _side) then {
-            [(format ["%1 - Mortar support is on cooldown", _side])] remoteExec ["hintSilent", _x];
+            [(format ["%1 - Mortar support is on cooldown", _side])] remoteExec ["hintSilentSilent", _x];
         };
     } forEach allPlayers;
 };
@@ -22,7 +22,7 @@ openMap true;
     _side = side player;
     {
         if (side _x == _side) then {
-            [(format ["%1 - %2 has called in mortar support. 5m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
+            [(format ["%1 - %2 has called in mortar support. 5m cooldown!", _side, _name])] remoteExec ["hintSilentSilent", _x];
         };
     } forEach allPlayers;
     openMap false;
@@ -55,6 +55,6 @@ missionNameSpace setVariable [_cooldownSide, nil, true];
 
 {
     if (side _x == _side) then {
-        [(format ["%1 - Mortar support is available!", _side])] remoteExec ["hintSilent", _x];
+        [(format ["%1 - Mortar support is available!", _side])] remoteExec ["hintSilentSilent", _x];
     };
 } forEach allPlayers;

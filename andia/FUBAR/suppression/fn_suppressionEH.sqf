@@ -56,7 +56,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
-        hint format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
+        hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
 
         if (_distance <= 50) exitWith {
             private _suppression = (

@@ -52,7 +52,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_size <= 360) then {
             _size * 1.5;
         } else {
-            _size * 0.5;
+            _size * 0.55;
         };
 
         private _unit = player;
@@ -62,7 +62,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_distance <= 50) exitWith {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") 
-                + ((1.8 * (_size*0.05)) / _distance)
+                + ((2.0 * (_size*0.05)) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
             [player] call andia_fnc_suppressionMain;
@@ -81,7 +81,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_distance <= 125) exitWith {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") 
-                + ((1.2 * (_size*0.05)) / _distance)
+                + ((1.4 * (_size*0.05)) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
             [player] call andia_fnc_suppressionMain;
@@ -89,7 +89,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_distance <= 250) exitWith {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") 
-                + ((0.6 * (_size*0.05)) / _distance)
+                + ((0.8 * (_size*0.05)) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
             [player] call andia_fnc_suppressionMain;

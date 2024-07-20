@@ -103,10 +103,18 @@ _unit addEventHandler ["Respawn", {
     _corpse removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
     removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
     _unit spawn {
-        sleep 3;
+        sleep 1.5;
         [player] call andia_fnc_suppressionEH;
     };
-    _corpse removeEventHandler [_thisEvent, _thisEventHandler];
+    _unit addEventHandler ["Respawn", {
+        params ["_unit", "_corpse"];
+        _corpse removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
+        removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
+        _unit spawn {
+            sleep 1.5;
+            [player] call andia_fnc_suppressionEH;
+        };
+    }];
 }];
 
 //(1.8*((190*1.5)*0.05))/20

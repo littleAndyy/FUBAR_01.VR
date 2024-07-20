@@ -1,6 +1,8 @@
 if (!hasInterface) exitWith {};
 params ["_unit"];
 
+[_unit, 0.9] remoteExecCall ["setAnimSpeedCoef", 0, true];
+
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionEnabled"}) exitWith {};
 
 enableCamShake true;
@@ -52,7 +54,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_size <= 360) then {
             _size * 1.5;
         } else {
-            _size * 0.55;
+            _size * 0.5;
         };
 
         private _unit = player;
@@ -103,18 +105,9 @@ _unit addEventHandler ["Respawn", {
     _corpse removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
     removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
     _unit spawn {
-        sleep 1.5;
-        [player] call andia_fnc_suppressionEH;
+        sleep 0.2;
+        [_this] remoteExecCall ["andia_fnc_suppressionEH", _this];
     };
-    _unit addEventHandler ["Respawn", {
-        params ["_unit", "_corpse"];
-        _corpse removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
-        removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
-        _unit spawn {
-            sleep 1.5;
-            [player] call andia_fnc_suppressionEH;
-        };
-    }];
 }];
 
 //(1.8*((190*1.5)*0.05))/20

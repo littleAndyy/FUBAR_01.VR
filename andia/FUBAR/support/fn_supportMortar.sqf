@@ -29,7 +29,7 @@ openMap true;
     [_pos] spawn {
         params ["_pos"];
         sleep 20;
-        [_pos, "Sh_82mm_AMOS", 120, 6, 3] call BIS_fnc_fireSupportVirtual;
+        [_pos, "Sh_82mm_AMOS", 100, 6, 3] call BIS_fnc_fireSupportVirtual;
     };
     [] spawn {
         sleep 3;

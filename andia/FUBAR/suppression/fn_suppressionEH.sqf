@@ -100,17 +100,12 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 }];
 _unit setVariable ["ANDIA_FUBAR_Suppression_ProjectileEH", _ANDIA_FUBAR_Suppression_ProjectileEH];
 
-_unit addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-    _unit removeEventHandler ["Suppressed", (_unit getVariable "ANDIA_FUBAR_SuppressedEH")];
-    removeMissionEventHandler ["ProjectileCreated", (_unit getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
-}];
-
 _unit addEventHandler ["Respawn", {
 	params ["_unit", "_corpse"];
+    _corpse removeEventHandler ["Suppressed", (_corpse getVariable "ANDIA_FUBAR_SuppressedEH")];
+    removeMissionEventHandler ["ProjectileCreated", (_corpse getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
     _unit spawn {
-        waitUntil { sleep 1; !isNull _this };
-        systemChat format ["Applied suppressionEH - Respawned: %1", _this];
+        waitUntil { sleep !isNull _this };
         [_this] remoteExecCall ["andia_fnc_suppressionEH", _this];
     };
 }];

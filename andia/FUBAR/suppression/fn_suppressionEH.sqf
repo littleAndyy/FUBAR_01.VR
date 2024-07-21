@@ -110,9 +110,11 @@ _unit addEventHandler ["Respawn", {
     _corpse removeEventHandler ["Suppressed", (_corpse getVariable "ANDIA_FUBAR_SuppressedEH")];
     removeMissionEventHandler ["ProjectileCreated", (_corpse getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
     _unit spawn {
-        waitUntil { sleep !isNull _this };
+        waitUntil { sleep 1; !isNull _this };
+        systemChat "Executed 'andia_fnc_suppressionEH' on respawn!";
         [_this] remoteExecCall ["andia_fnc_suppressionEH", _this];
     };
+    _unit removeEventHandler [_thisEvent, _thisEventHandler];
 }];
 
 //(1.8*((190*1.5)*0.05))/20

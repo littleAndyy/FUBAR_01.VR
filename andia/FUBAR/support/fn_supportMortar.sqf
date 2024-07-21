@@ -51,6 +51,7 @@ openMap true;
 
 //"andia_mortar_cooldown_blufor"
 //"andia_mortar_cooldown_opfor"
+//"andia_mortar_cooldown_guer"
 //missionNameSpace setVariable ["andia_mortar_cooldown_opfor", nil, true];
 missionNameSpace setVariable [_cooldownSide, _delay, true];
 sleep _delay;

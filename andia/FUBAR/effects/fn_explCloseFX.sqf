@@ -15,7 +15,7 @@ _light setLightFlareMaxDistance 3000;
 _light setLightUseFlare true;
 
 private _sparks = "#particlesource" createVehicleLocal _pos;
-_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,9,[0,0,0],[0,0,4],1,500,35,0.1,[(0.0001*(_size/2)),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","","",0,false,0.31,[[500000,400000,5000,10000],[0,0,0,0]],[0,1,0]];
+_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,9,[0,0,0],[0,0,4],1,500,35,0.1,[(0.0001*(_size/2)),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","","",0,false,0.31,[[50000,40000,(random [5000,25000,35000]),1000],[0,0,0,0]],[0,1,0]];
 _sparks setParticleRandom [1,[0,0,0],[39,39,29],3,1,[0,0,0,0],2,2,0,0];
 _sparks setParticleCircle [0,[1,1,1]];
 _sparks setDropInterval 0.002;

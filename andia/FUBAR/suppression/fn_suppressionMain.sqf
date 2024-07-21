@@ -38,7 +38,7 @@ private _loop = [{
 	if (_suppressionValue >= 30.00) then {
 		_suppressionValue = 30.00;
 	};
-	if (_suppressionValue <= 0) exitWith {
+	if ((_suppressionValue <= 0) || (!alive _unit)) exitWith {
 		private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
 		[_loopPFH] call CBA_fnc_removePerFrameHandler;
 		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
@@ -47,10 +47,10 @@ private _loop = [{
 	
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0001));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.00015));
 		systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0025));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0028));
 		systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];

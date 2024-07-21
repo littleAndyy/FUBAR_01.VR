@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=7;
+		nextID=9;
 	};
 	class LayerIndexProvider
 	{
-		nextID=11;
+		nextID=13;
 	};
 	class Camera
 	{
-		pos[]={3477.6895,13.600957,3085.1406};
-		dir[]={-0.68213809,-0.51338106,0.52070099};
-		up[]={-0.40807852,0.85816008,0.31150123};
-		aside[]={0.60676378,-4.7963113e-08,0.79488337};
+		pos[]={3470.0244,21.550674,3123.3613};
+		dir[]={-0.033442371,-0.21907771,-0.9751358};
+		up[]={-0.0075089633,0.97570777,-0.21895005};
+		aside[]={-0.99941462,7.5262506e-08,0.034275003};
 	};
 };
 binarizationWanted=0;
@@ -70,18 +70,70 @@ class CustomAttributes
 		name="HNEG_emed_ped_session";
 		class Attribute0
 		{
-			property="HNEG_emed_ped_sessionRUN";
+			property="HNEG_emed_ped_session_emitter_editor_attributeDB";
 			expression="false";
 			class Value
 			{
 				class data
 				{
-					singleType="SCALAR";
-					value=1;
+					singleType="STRING";
+					value="[]";
 				};
 			};
 		};
 		class Attribute1
+		{
+			property="HNEG_emed_ped_sessionLIGHT_POINTERS";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute2
+		{
+			property="HNEG_emed_ped_session_emitter_editor_triggerNamespaceDB";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[]";
+				};
+			};
+		};
+		class Attribute3
+		{
+			property="HNEG_emed_ped_sessionPTLGRPIDS";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute4
+		{
+			property="HNEG_emed_ped_session_emitter_editorDB";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[]";
+				};
+			};
+		};
+		class Attribute5
 		{
 			property="HNEG_emed_ped_sessionATTNOTOOL";
 			expression="false";
@@ -89,12 +141,129 @@ class CustomAttributes
 			{
 				class data
 				{
-					singleType="SCALAR";
-					value=1;
+					nil=1;
+					singleType="ANY";
 				};
 			};
 		};
-		nAttributes=2;
+		class Attribute6
+		{
+			property="HNEG_emed_ped_session_emitter_editor_objectNamespaceDB";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[[[8,""_thisdraggedeh"",1],[8,""hneg_emed_thisidx"",0],[8,""hneg_emed_thisishnegemitter"",true],[8,""hneg_emed_thisorigin"",[3465.83,3068.47,0]],[8,""hneg_emed_initingemitter"",true],[8,""thisdisabled"",false],[8,""hneg_emed_draggedendattchaeh"",0],[8,""hneg_emed_thisname"",""particle_emitter_0""],[8,""hneg_emed_thisinit"",""""],[8,""hneg_emed_thisid"",8],[8,""hneg_emed_thisunregeh"",0],[8,""hneg_emed_emitternr"",0],[8,""hneg_emed_internalinitchange"",true],[8,""hneg_emed_draggedenddrageh"",0],[8,""hneg_emed_thiscustompreset"",""spark2""]]]";
+				};
+			};
+		};
+		class Attribute7
+		{
+			property="HNEG_emed_ped_sessionLGTGRPIDS";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute8
+		{
+			property="HNEG_emed_ped_session_emitter_editor";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[[""cur_emitter"",0,""cur_params"",""editor_toggled"",true,""cur_page"",0]]";
+				};
+			};
+		};
+		class Attribute9
+		{
+			property="HNEG_emed_ped_sessionRUN";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute10
+		{
+			property="HNEG_emed_ped_sessionNOTOOLEHS";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute11
+		{
+			property="HNEG_emed_ped_sessionTOOLVER";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute12
+		{
+			property="HNEG_emed_ped_sessionID";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					nil=1;
+					singleType="ANY";
+				};
+			};
+		};
+		class Attribute13
+		{
+			property="HNEG_emed_ped_sessionPOINTERS";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[]";
+				};
+			};
+		};
+		class Attribute14
+		{
+			property="HNEG_emed_ped_session_emitter_editor_parsingNamespaceDB";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="[[""hneg_emed_session_on"",true],[""hneg_emed_indexmake"",[8]],[""hneg_emed_editortoggled"",true],[""hneg_emed_scrollblockbottomorig"",[0,0,0,0]],[""hneg_emed_allemittergrpsids"",[[""particle_emitter_0""]]]]";
+				};
+			};
+		};
+		nAttributes=15;
 	};
 };
 class Mission
@@ -111,8 +280,8 @@ class Mission
 		forecastLightnings=0.1;
 		year=2035;
 		day=28;
-		hour=13;
-		minute=37;
+		hour=5;
+		minute=-9;
 		startFogDecay=0.014;
 		forecastFogDecay=0.014;
 	};

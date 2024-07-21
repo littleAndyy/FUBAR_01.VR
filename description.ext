@@ -20,11 +20,18 @@ class CfgFunctions
 			class suppressionEH {};
 			class suppressionFX {};
 			class suppressionBreathing {};
+			class suppressionForce {};
 		};
 		class FUBAR_dust 
 		{
 			file = "andia\FUBAR\dust";
 			class grenadeDust {};
+		};
+		class FUBAR_effects
+		{
+			file = "andia\FUBAR\effects";
+			class explCloseFX {};
+			class impactSparks {};
 		};
 	};
 };

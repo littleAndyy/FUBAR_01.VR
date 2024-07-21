@@ -35,11 +35,12 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
-        if (_distance < 30) then {
+        if (_distance < 50) then {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") + ((0.5 * _caliberSize) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
+            [(ASLToATL _pos), _velocity, _caliberSize] call andia_fnc_impactSparks;
         };
         [player] call andia_fnc_suppressionMain;
 
@@ -61,7 +62,11 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         private _distance = (_unit distance (ASLToATL _pos));
         hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
 
+        [(ASLtoATL _pos), _size] call andia_fnc_explCloseFX;
         if (_distance <= 50) exitWith {
+            if (_distance <= 2) then {
+                [_pos, _unit, _size] call andia_fnc_suppressionForce;
+            };
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") 
                 + ((2.0 * (_size*0.05)) / _distance)

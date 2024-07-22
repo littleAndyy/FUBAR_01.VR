@@ -4,7 +4,7 @@ params ["_pos", "_unit", "_size"];
 _explosionPos = (ASLToATL _pos);
 private _hitPos = (_unit modelToWorldWorld (_unit selectionPosition "pelvis"));
 private _directionVector = (_explosionPos vectorFromTo _hitPos);
-private _force = _directionVector vectorMultiply (_size * 0.03);
+private _force = _directionVector vectorMultiply (_size * 0.02);
 _unit addForce [_force, _hitPos];
 
 [{

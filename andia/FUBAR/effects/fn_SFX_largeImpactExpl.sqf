@@ -1,0 +1,35 @@
+params ["_pos"];
+
+private _rndSound = selectRandom [
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_1.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_2.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_3.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_4.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_5.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_6.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_7.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_8.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_9.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_10.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_11.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_12.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_13.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_14.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_15.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_16.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_17.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_18.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_19.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_20.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_21.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_22.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_23.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_24.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_25.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_26.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_27.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_28.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_29.ogg",
+    "andia\FUBAR\effects\sound\expl_large_mid_impact_30.ogg"
+];
+playSound3D [(getMissionPath _rndSound), objNull, false, _pos, 1.5, 1, 10000, 0, true];

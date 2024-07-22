@@ -40,17 +40,16 @@ private _loop = [{
 	};
 	if ((_suppressionValue <= 0) || (!alive _unit)) exitWith {
 		private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
-		[_loopPFH] call CBA_fnc_removePerFrameHandler;
 		_unit setVariable ["ANDIA_FUBAR_SuppressionValue", 0];
 		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
+		[_loopPFH] call CBA_fnc_removePerFrameHandler;
 	};
-	
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.00015));
 		systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0028));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0025));
 		systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];
@@ -62,10 +61,10 @@ private _loop = [{
 		_unit setVariable ["ANDIA_FUBAR_DeafnessSFX", _hum];
 	};
 	if ((_suppressionValue <= 10) && ((_unit getVariable "ANDIA_FUBAR_Deafness") == true)) then {
+		_unit setVariable ["ANDIA_FUBAR_Deafness", false];
 		playSoundUI [(getMissionPath "andia\FUBAR\suppression\sound\low_hum_end.ogg"), 1, 1];
 		private _SFX = (_unit getVariable "ANDIA_FUBAR_DeafnessSFX");
 		stopSound _SFX;
-		_unit setVariable ["ANDIA_FUBAR_Deafness", false];
 		_unit setVariable ["ANDIA_FUBAR_DeafnessSFX", nil];
 	};
 	

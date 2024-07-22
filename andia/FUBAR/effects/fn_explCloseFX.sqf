@@ -1,6 +1,8 @@
 if (!hasInterface) exitWith {};
 if (floor (random 2) == 0) exitWith {};
-params ["_pos", "_size"];
+params ["_pos", "_size", "_velocityVector"];
+
+_velocityVector = _velocityVector vectorMultiply (random [-0.11,0.03,0.11]);
 
 private _light = "#lightpoint" createVehicleLocal _pos;
 _light setLightColor [1, (random [0.4,0.8,1]), (random [0.1,0.4,0.6])];
@@ -15,8 +17,8 @@ _light setLightFlareMaxDistance 3000;
 _light setLightUseFlare true;
 
 private _sparks = "#particlesource" createVehicleLocal _pos;
-_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,9,[0,0,0],[0,0,4],1,500,35,0.1,[(0.0001*(_size/2)),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","","",0,false,0.31,[[50000,40000,(random [5000,25000,35000]),1000],[0,0,0,0]],[0,1,0]];
-_sparks setParticleRandom [1,[0,0,0],[39,39,29],3,1,[0,0,0,0],2,2,0,0];
+_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,9,[0,0,0],_velocityVector,1,500,35,0.1,[((random [0.8,1,1.2])*0.0001*(_size/2)),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","","",0,false,0.21,[[50000,40000,(random [5000,25000,35000]),1000],[0,0,0,0]],[0,1,0]];
+_sparks setParticleRandom [1,[0,0,0],[(29*(random [-0.5,1,2.5])),(29*(random [-0.5,1,2.5])),(29*(random [-0.5,1,2.5]))],3,1,[0,0,0,0],2,2,0,0];
 _sparks setParticleCircle [0,[1,1,1]];
 _sparks setDropInterval 0.002;
 

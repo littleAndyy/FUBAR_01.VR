@@ -2,7 +2,7 @@ if (!hasInterface) exitWith {};
 if (floor (random 3) == 0) exitWith {};
 params ["_pos", "_velocityVector", "_caliber"];
 if (_caliber < 0.8) exitWith {};
-if ((random [0.6, 1.6, 3.0]) > _caliber) exitWith {};
+if ((random [0.4, 1.8, 3.0]) > _caliber) exitWith {};
 
 _velocityVector = _velocityVector vectorMultiply (random [-0.08,0.08,0.11]);
 private _randomSize = (random [0.5,1,2.5]);

@@ -35,14 +35,14 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
-        if (_distance < 50) then {
+        if (_distance <= 50) then {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") + ((0.6 * _caliberSize) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
+            [_unit] call andia_fnc_suppressionMain;
             [(ASLToATL _pos), _velocity, _caliberSize] call andia_fnc_impactSparks;
         };
-        [player] call andia_fnc_suppressionMain;
 
         _projectile removeEventHandler [_thisEvent, _thisEventHandler];
     }];
@@ -50,8 +50,8 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         params ["_projectile", "_pos", "_velocity"];
 
         private _size = getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "indirectHitRange") * getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "hit");
-        
         if (_size <= 1) exitWith {};
+        
         if (_size <= 360) then {
             _size * 1.5;
         } else {
@@ -62,7 +62,10 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         private _distance = (_unit distance (ASLToATL _pos));
         hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
 
-        [(ASLtoATL _pos), _size] call andia_fnc_explCloseFX;
+        [(ASLtoATL _pos), _size, _velocity] call andia_fnc_explCloseFX;
+        if (_size > 2970) then {
+            [_pos] call andia_fnc_SFX_largeImpactExpl;
+        };
         if (_distance <= 50) exitWith {
             if (_distance <= 2) then {
                 [_pos, _unit, _size] call andia_fnc_suppressionForce;
@@ -88,7 +91,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         if (_distance <= 125) exitWith {
             private _suppression = (
                 (_unit getVariable "ANDIA_FUBAR_SuppressionValue") 
-                + ((1.4 * (_size*0.05)) / _distance)
+                + ((1.5 * (_size*0.05)) / _distance)
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
             [player] call andia_fnc_suppressionMain;
@@ -105,18 +108,16 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 }];
 _unit setVariable ["ANDIA_FUBAR_Suppression_ProjectileEH", _ANDIA_FUBAR_Suppression_ProjectileEH];
 
-_unit addEventHandler ["MPRespawn", {
-	params ["_unit", "_corpse"];
-    _corpse removeEventHandler ["Suppressed", (_corpse getVariable "ANDIA_FUBAR_SuppressedEH")];
-    removeMissionEventHandler ["ProjectileCreated", (_corpse getVariable "ANDIA_FUBAR_Suppression_ProjectileEH")];
-    [_unit, _corpse, _thisEvent, _thisEventHandler] spawn {
-        params ["_unit", "_corpse", "_typeEH", "_EH"];
-        waitUntil { sleep 1.5; (!isNull _this) };
-        hintSilent "Executed 'andia_fnc_suppressionEH' on respawn!";
-        _corpse removeEventHandler [_typeEH, _EH];
-        sleep 0.1;
-        _unit call andia_fnc_suppressionEH;
-    };
-}];
+if (isMultiplayer) then {
+    _unit addEventHandler ["MPRespawn", {
+        params ["_unit", "_corpse"];
+        [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
+    }];
+} else {
+    _unit addEventHandler ["Respawn", {
+        params ["_unit", "_corpse"];
+        [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
+    }];
+};
 
 //(1.8*((190*1.5)*0.05))/20

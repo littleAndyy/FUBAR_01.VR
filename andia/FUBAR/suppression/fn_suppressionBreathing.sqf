@@ -1,10 +1,6 @@
 if (!hasInterface) exitWith {};
 params ["_unit", "_i", "_max"];
 
-if (_i == _max) then {
-    _unit setVariable ["ANDIA_FUBAR_SuppressedBreathing", false];
-};
-
 private _rndSound = selectRandom [
     "andia\FUBAR\suppression\sound\HLL_Breathing_Heavy_M_1.ogg",
     "andia\FUBAR\suppression\sound\HLL_Breathing_Heavy_M_2.ogg",
@@ -25,3 +21,6 @@ private _rndSound = selectRandom [
     "andia\FUBAR\suppression\sound\HLL_Breathing_Heavy_M_17.ogg"
 ];
 playSoundUI [(getMissionPath _rndSound), 0.33, 1];
+if (_i == _max) exitWith {
+    _unit setVariable ["ANDIA_FUBAR_SuppressedBreathing", nil];
+};

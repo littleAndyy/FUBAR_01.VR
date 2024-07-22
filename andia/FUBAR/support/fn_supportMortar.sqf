@@ -15,7 +15,7 @@ if (!isNil {_cooldown}) exitWith {
     } forEach allPlayers;
 };
 
-openMap true;
+openMap [true,true];
 ["mortar_support", "onMapSingleClick", {
     params ["","_pos","",""];
     _name = name player;
@@ -25,11 +25,21 @@ openMap true;
             [(format ["%1 - %2 has called in mortar support. 5m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
         };
     } forEach allPlayers;
-    openMap false;
+    openMap [false,false];
     [_pos] spawn {
         params ["_pos"];
         sleep 20;
-        [_pos, "Sh_82mm_AMOS", 100, 6, 3] call BIS_fnc_fireSupportVirtual;
+        [
+            _pos, // target
+            "Sh_82mm_AMOS", // ammo
+            100, // radius
+            6, // rounds
+            3, // delay
+            {false}, // conditionEnd
+            0, // safezone
+            250, // altitude
+            100 // speed
+        ] call BIS_fnc_fireSupportVirtual;
     };
     [] spawn {
         sleep 3;

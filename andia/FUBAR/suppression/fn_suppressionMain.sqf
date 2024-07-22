@@ -41,8 +41,8 @@ private _loop = [{
 	if ((_suppressionValue <= 0) || (!alive _unit)) exitWith {
 		private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
 		[_loopPFH] call CBA_fnc_removePerFrameHandler;
-		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
 		_unit setVariable ["ANDIA_FUBAR_SuppressionValue", 0];
+		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
 	};
 	
 	

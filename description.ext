@@ -34,8 +34,16 @@ class CfgFunctions
 			class explCloseFX {};
 			class impactSparks {};
 			class impactPlayer {};
-			class impactGibs {};
 			class SFX_largeImpactExpl {};
+			class impactGibs {};
+		};
+		class FUBAR_PvP
+		{
+			file = "andia\FUBAR\pvp";
+			class explodeCache {};
+			class explodeCacheFX {};
+			class explodeCacheAction {};
+			class objectiveCreate {};
 		};
 	};
 };

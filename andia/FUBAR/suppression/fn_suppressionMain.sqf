@@ -29,7 +29,7 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 };
 
 private _loop = [{
-	params ["_args"];
+	params ["_args", "_handle"];
 	private _unit = _args select 0;
 	private _suppressionValue = _unit getVariable "ANDIA_FUBAR_SuppressionValue";
 	if (_suppressionValue <= 0.1) then {
@@ -39,10 +39,10 @@ private _loop = [{
 		_suppressionValue = 30.00;
 	};
 	if ((_suppressionValue <= 0) || (!alive _unit)) exitWith {
-		private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
+		//private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
 		_unit setVariable ["ANDIA_FUBAR_SuppressionValue", 0];
-		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
-		[_loopPFH] call CBA_fnc_removePerFrameHandler;
+		//_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
+		[_handle] call CBA_fnc_removePerFrameHandler;
 	};
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
@@ -72,4 +72,4 @@ private _loop = [{
 	
 
 }, 0, [_unit]] call CBA_fnc_addPerFrameHandler;
-_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", _loop];
+//_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", _loop];

@@ -51,13 +51,16 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         private _size = getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "indirectHitRange") * getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "hit");
         if (_size <= 1) exitWith {};
-        
-        if (_size <= 360) then {
-            _size * 1.5;
-        } else {
-            _size * 0.5;
-        };
 
+        if (_size <= 360) then {
+            _size = _size * 1.5;
+        } else {
+            if (_size > 15000) then {
+                _size = 15000;
+            };
+            _size = _size * 0.75;
+        };
+        
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
         hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];

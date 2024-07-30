@@ -61,9 +61,9 @@ openMap [true,true];
 
 
 //"andia_grad_cooldown_blufor"
-//"andia_grad_cooldown_opfor"
+//"andia_grad_cooldown_east"
 //"andia_grad_cooldown_guer"
-//missionNameSpace setVariable ["andia_grad_cooldown_opfor", nil, true];
+//missionNameSpace setVariable ["andia_grad_cooldown_east", nil, true];
 missionNameSpace setVariable [_cooldownSide, _delay, true];
 sleep _delay;
 missionNameSpace setVariable [_cooldownSide, nil, true];

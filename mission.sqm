@@ -12,18 +12,22 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=9;
+		nextID=14;
+	};
+	class MarkerIDProvider
+	{
+		nextID=3;
 	};
 	class LayerIndexProvider
 	{
-		nextID=14;
+		nextID=15;
 	};
 	class Camera
 	{
-		pos[]={3474.0759,6.9802675,3088.1626};
-		dir[]={-0.90522945,-0.39756265,-0.15008818};
-		up[]={-0.39221019,0.91757417,-0.065029219};
-		aside[]={-0.1635703,-9.132782e-08,0.98654187};
+		pos[]={3479.9961,30.188429,3088.1602};
+		dir[]={-0.4643589,-0.88467497,0.042401459};
+		up[]={-0.88101327,0.46619338,0.080446199};
+		aside[]={0.090933822,-1.5987534e-06,0.99589211};
 	};
 };
 binarizationWanted=0;
@@ -31,13 +35,14 @@ sourceName="FUBAR_01";
 addons[]=
 {
 	"A3_Characters_F_AoW",
-	"A3_Modules_F_Curator_Curator"
+	"A3_Modules_F_Curator_Curator",
+	"A3_Supplies_F_Heli_CargoNets"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F_AoW";
@@ -52,11 +57,19 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item2
+		{
+			className="A3_Supplies_F_Heli";
+			name="Arma 3 Helicopters - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
 {
-	"AoW"
+	"AoW",
+	"Heli"
 };
 randomSeed=7421105;
 class ScenarioData
@@ -287,7 +300,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1;
+		items=3;
 		class Item0
 		{
 			dataType="Layer";
@@ -677,6 +690,134 @@ class Mission
 				};
 			};
 			id=3;
+		};
+		class Item1
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3477,5.8253026,3088};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="cache_01";
+			};
+			id=9;
+			type="B_CargoNet_01_ammo_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="HNEG_emed_aedInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[""arifle_MXC_F"",""arifle_MXM_F"",""arifle_MX_F"",""arifle_MX_GL_F"",""arifle_MX_SW_F"",""arifle_SDAR_F"",""hgun_P07_F"",""hgun_Pistol_heavy_01_F"",""launch_NLAW_F"",""launch_Titan_F"",""launch_Titan_short_F"",""SMG_01_F"",""srifle_EBR_F"",""srifle_LRR_camo_F"",""srifle_LRR_F""],[4,2,8,4,4,2,2,2,2,2,2,2,2,2,2]],[[""100Rnd_65x39_caseless_mag_Tracer"",""11Rnd_45ACP_Mag"",""16Rnd_9x21_Mag"",""1Rnd_HE_Grenade_shell"",""1Rnd_SmokeBlue_Grenade_shell"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokePurple_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""20Rnd_556x45_UW_mag"",""20Rnd_762x51_Mag"",""30Rnd_45ACP_Mag_SMG_01"",""30Rnd_556x45_Stanag_red"",""30Rnd_65x39_caseless_mag"",""3Rnd_HE_Grenade_shell"",""7Rnd_408_Mag"",""APERSBoundingMine_Range_Mag"",""APERSMine_Range_Mag"",""APERSTripMine_Wire_Mag"",""ATMine_Range_Mag"",""B_IR_Grenade"",""ClaymoreDirectionalMine_Remote_Mag"",""DemoCharge_Remote_Mag"",""HandGrenade"",""Laserbatteries"",""MiniGrenade"",""NLAW_F"",""SatchelCharge_Remote_Mag"",""SLAMDirectionalMine_Wire_Mag"",""SmokeShell"",""SmokeShellBlue"",""SmokeShellGreen"",""SmokeShellOrange"",""SmokeShellPurple"",""SmokeShellRed"",""SmokeShellYellow"",""Titan_AA"",""Titan_AP"",""Titan_AT"",""UGL_FlareGreen_F"",""UGL_FlareWhite_F""],[16,14,14,15,2,2,2,2,2,2,2,6,24,14,6,52,3,12,5,5,5,5,8,5,5,24,5,24,8,5,5,2,2,2,2,2,2,2,6,6,6,2,2]],[[""Binocular"",""Laserdesignator"",""Rangefinder"",""acc_flashlight"",""acc_pointer_IR"",""FirstAidKit"",""ItemGPS"",""Medikit"",""MineDetector"",""muzzle_snds_acp"",""muzzle_snds_B"",""muzzle_snds_H"",""muzzle_snds_H_SW"",""muzzle_snds_L"",""optic_Aco"",""optic_Aco_smg"",""optic_DMS"",""optic_Hamr"",""optic_Holosight"",""optic_LRPS"",""optic_MRD"",""optic_NVS"",""optic_SOS"",""optic_tws"",""optic_tws_mg"",""ToolKit""],[1,1,1,5,5,10,5,1,1,5,5,5,1,5,2,2,2,2,2,2,2,2,2,2,2,1]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emitterInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute6
+				{
+					property="HNEG_emed_emtrDieout2ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=7;
+			};
+		};
+		class Item2
+		{
+			dataType="Trigger";
+			position[]={3475.991,5,3088};
+			class Attributes
+			{
+				onActivation="[cache_01, false] remoteExecCall [""andia_fnc_explodeCacheAction"", 2];";
+				sizeA=5;
+				sizeB=5;
+				sizeC=5;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=10;
+			type="EmptyDetectorArea10x10";
 		};
 	};
 };

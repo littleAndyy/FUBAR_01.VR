@@ -6,7 +6,7 @@ private _pos = getPosATL _obj;
 private _distance = (player distance _pos);
 private _suppression = (
     (player getVariable "ANDIA_FUBAR_SuppressionValue") 
-    + ((1.5 * (3400*0.05)) / _distance)
+    + ((1.5 * (3300*0.05)) / _distance)
 );
 player setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
 [player] call andia_fnc_suppressionMain;
@@ -64,7 +64,7 @@ _smoke setVectorUp surfaceNormal _pos;
 _smoke setParticleCircle [6, [-3, -3, 3]];
 _smoke setParticleRandom [1, [0.25, 0.25, 0], [3, 3, 15], 0.5, 0.25, [0, 0, 0, 0.1], 0, 0];
 _smoke setParticleParams [["\A3\data_f\cl_basic", 1, 0, 1], "", "Billboard", 1, 9, [0,0,0], [0, 0, 0.1], 8, 25, 7.9, 0.01, [3, 9, 14, 14, 0], [[0.025, 0.015, 0.01, 0.1],[0.06, 0.05, 0.04, 0.9],[0.08, 0.07, 0.06, 0.9],[0.11, 0.1, 0.09, 0.9], [0.13, 0.12, 0.11, 0]], [0.08], 1, 0, "", "", _pos];
-_smoke setDropInterval 0.0006;
+_smoke setDropInterval 0.0009;
 
 /*_shockwave = "#particlesource" createVehicleLocal _pos;
 _shockwave setParticleParams [

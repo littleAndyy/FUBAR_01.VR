@@ -60,7 +60,6 @@ class CfgFunctions
 			class explodeCacheAction {};
 			class objectiveCreate {};
 			class objectiveSide {};
-			class objectiveUI {};
 		};
 	};
 };

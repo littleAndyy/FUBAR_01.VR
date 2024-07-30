@@ -26,17 +26,18 @@ if (!_isArmed) then {
                 [_target, _side] spawn {
                     params ["_obj", "_side"];
 
-                    private _timer = 10;
+                    private _timer = 90;
 
                     sleep 0.1;
                     private _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
+                    private _marker = _obj getVariable "andia_fubar_marker";
+                    private _markerInfo = _obj getVariable "andia_fubar_markerInfo";
                     for "_i" from 0 to _timer do {
                         _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
                         sleep 1;
                         systemChat format ["Explosives armed! %1", _i]; // debug
+                        _markerInfo setMarkerText format ["%1s, %2", (str (_timer - _i)), (_obj getVariable "andia_fnc_objectiveName")];
                         if ((_isArmed == true) && (_i == _timer)) then {
-                            private _marker = _obj getVariable "andia_fubar_marker";
-                            private _markerInfo = _obj getVariable "andia_fubar_markerInfo";
                             [_side, _obj, _marker, _markerInfo, false, true] remoteExecCall ["andia_fnc_objectiveSide", 2];
                             _obj remoteExecCall ["andia_fnc_explodeCache", 2];
                         };

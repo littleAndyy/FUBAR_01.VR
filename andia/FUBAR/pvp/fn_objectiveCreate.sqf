@@ -26,6 +26,7 @@ private _objectives = missionNameSpace getVariable "andia_fnc_objectives";
 private _phoneticAlphabet = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"];
 private _randomName = ((selectRandom _phoneticAlphabet) + str(floor random 999));
 _object setVariable ["andia_fnc_objectiveName", _randomName, true];
+_object allowDamage false;
 
 _objectives pushBack _object;
 private _markerName = format ["%1", random 99999];

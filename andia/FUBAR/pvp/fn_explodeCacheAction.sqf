@@ -1,6 +1,6 @@
 params ["_obj", ["_isArmed", false]];
 
-private _duration = 1;
+private _duration = 5; // action duration
 
 if (!_isArmed) then {
     private _jip = ([
@@ -26,7 +26,7 @@ if (!_isArmed) then {
                 [_target, _side] spawn {
                     params ["_obj", "_side"];
 
-                    private _timer = 90;
+                    private _timer = 90; // bomb timer duration
 
                     sleep 0.1;
                     private _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
@@ -35,6 +35,7 @@ if (!_isArmed) then {
                     for "_i" from 0 to _timer do {
                         _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
                         sleep 1;
+                        playSound3D [(getMissionPath "andia\FUBAR\pvp\sound\bomb_beep.ogg"), _obj, false, getPosASL _obj, 0.5, 1, 25];
                         systemChat format ["Explosives armed! %1", _i]; // debug
                         _markerInfo setMarkerText format ["%1s, %2", (str (_timer - _i)), (_obj getVariable "andia_fnc_objectiveName")];
                         if ((_isArmed == true) && (_i == _timer)) then {

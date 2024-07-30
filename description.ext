@@ -1,3 +1,7 @@
+class RscTitles {
+	#include "andia\FUBAR\pvp\fubar_objectiveUI_v1\fubar_objectiveUI.hpp"
+};
+
 respawnOnStart = 0;
 respawn = 3;
 respawnDelay = 5;
@@ -44,9 +48,12 @@ class CfgFunctions
 			class explodeCacheFX {};
 			class explodeCacheAction {};
 			class objectiveCreate {};
+			class objectiveSide {};
+			class objectiveUI {};
 		};
 	};
 };
+
 
 class CfgCommunicationMenu
 {

@@ -1,4 +1,4 @@
-params ["_obj", "_isArmed"];
+params ["_obj", ["_isArmed", false]];
 
 private _duration = 1;
 
@@ -17,20 +17,27 @@ if (!_isArmed) then {
             [_target] remoteExecCall ["removeAllActions", 0];
             private _jipID = (_target getVariable "andia_fnc_explodeCache_jipID");
             [_target] remoteExec ["", _jipID];
+            private _side = (side _caller);
             [{
-                params ["_target"];
+                params ["_target", "_side"];
                 _target setVariable ["andia_fnc_explodeCache_jipID", nil, true];
                 [_target, true] remoteExecCall ["andia_fnc_explodeCacheAction", 2]; // disarm bomb action
                 _target setVariable ["andia_fnc_explodeCache_armed", true, true];
-                _target spawn {
-                    params ["_obj"];
+                [_target, _side] spawn {
+                    params ["_obj", "_side"];
+
+                    private _timer = 10;
+
                     sleep 0.1;
                     private _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
-                    for "_i" from 0 to 60 do {
+                    for "_i" from 0 to _timer do {
                         _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
                         sleep 1;
                         systemChat format ["Explosives armed! %1", _i]; // debug
-                        if ((_isArmed == true) && (_i == 60)) then {
+                        if ((_isArmed == true) && (_i == _timer)) then {
+                            private _marker = _obj getVariable "andia_fubar_marker";
+                            private _markerInfo = _obj getVariable "andia_fubar_markerInfo";
+                            [_side, _obj, _marker, _markerInfo, false, true] remoteExecCall ["andia_fnc_objectiveSide", 2];
                             _obj remoteExecCall ["andia_fnc_explodeCache", 2];
                         };
                         if (_isArmed == false) exitWith {
@@ -40,7 +47,7 @@ if (!_isArmed) then {
                         };
                     };
                 };
-            }, [_target], 0.1] call CBA_fnc_waitAndExecute;
+            }, [_target, _side], 0.1] call CBA_fnc_waitAndExecute;
         },							// Code executed on completion
         {},																// Code executed on interrupted
         [],																// Arguments passed to the scripts as _this select 3

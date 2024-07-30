@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3479.9961,30.188429,3088.1602};
-		dir[]={-0.4643589,-0.88467497,0.042401459};
-		up[]={-0.88101327,0.46619338,0.080446199};
-		aside[]={0.090933822,-1.5987534e-06,0.99589211};
+		pos[]={3473.54,10.810385,3085.3894};
+		dir[]={0.48439962,-0.69779414,0.52776068};
+		up[]={0.4718844,0.71623337,0.51412213};
+		aside[]={0.73675209,-2.9057264e-07,-0.6762237};
 	};
 };
 binarizationWanted=0;
@@ -808,7 +808,7 @@ class Mission
 			position[]={3475.991,5,3088};
 			class Attributes
 			{
-				onActivation="[cache_01, false] remoteExecCall [""andia_fnc_explodeCacheAction"", 2];";
+				onActivation="[cache_01, 50, true] execVM ""andia\FUBAR\pvp\fn_objectiveCreate.sqf"";";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;

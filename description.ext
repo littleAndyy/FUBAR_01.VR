@@ -7,6 +7,17 @@ respawn = 3;
 respawnDelay = 5;
 respawnDialog = 1;
 respawnTemplates[] = {"Counter","MenuPosition", "Spectator"};
+
+reviveMode = 1; // 0 = Disabled, 1 = Enabled, 2 = controlled by player attributes
+reviveUnconsciousStateMode = 0; // 0 = Basic, 1 = Advanced, 2 = Realistic
+reviveRequiredTrait = 0; // 0 = None, 1 = Medic Only
+reviveRequiredItems = 2; // 0 = None, 1 = Medikit, 2 = Medikit or FirstAidKit
+reviveRequiredItemsFakConsumed = 1;
+reviveMedicSpeedMultiplier = 1.0; 
+reviveDelay = 5; // Default: 6
+reviveForceRespawnDelay = 3;
+reviveBleedOutDelay = 300;
+
 DisabledAI = 1;
 
 enableDebugConsole = 1;

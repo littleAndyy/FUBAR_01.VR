@@ -38,6 +38,6 @@ if ((_timers#_index) <= 0) exitWith {
     [_handle] call CBA_fnc_removePerFrameHandler;
 };
 private _time = (_timers#_index) - 1; 
-_timers set [0, _time];
+_timers set [_index, _time];
 _object setVariable ["andia_fubar_objectiveTimers", _timers, true];
 _markerInfo setMarkerText (format ["%1, %2", (str (_timers#0)), _objectiveName]);

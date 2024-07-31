@@ -23,9 +23,9 @@ private _rndExplosionAddExtra = selectRandom [
     "andia\FUBAR\pvp\sound\explosion_body_big_004.ogg"
 ];
 private _posASL = (getPosASL _obj);
-playSound3D [(getMissionPath _rndExplosionSFX), _obj, false, _posASL, 5, 1, 10000, 0];
-playSound3D [(getMissionPath _rndExplosionAdd), _obj, false, _posASL, 5, 1, 10000, 0];
-playSound3D [(getMissionPath _rndExplosionAddExtra), _obj, false, _posASL, 5, 1, 15000, 0];
+playSound3D [(getMissionPath _rndExplosionSFX), _obj, false, _posASL, 5, 1, 10000];
+playSound3D [(getMissionPath _rndExplosionAdd), _obj, false, _posASL, 5, 1, 10000];
+playSound3D [(getMissionPath _rndExplosionAddExtra), _obj, false, _posASL, 5, 1, 15000];
 [_obj] remoteExecCall ["andia_fnc_explodeCacheFX", [0,-2] select isDedicated];
 
 _obj setVariable ["andia_fnc_explodeCache_armed", nil, true];

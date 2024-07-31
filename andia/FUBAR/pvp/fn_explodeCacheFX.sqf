@@ -37,12 +37,12 @@ _light spawn {
     params ["_light"];
     private _intensity = 5000000;
     while {true} do {
+        sleep 0.01;
         _intensity = (_intensity * 0.95);
         _light setLightIntensity _intensity;
         if (_intensity <= 0) exitWith {
             deleteVehicle _light;
         };
-        sleep 0.01;
     };
 };
 

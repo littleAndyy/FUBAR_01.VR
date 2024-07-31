@@ -39,7 +39,7 @@ openMap [true,true];
             20, // safezone
             220, // altitude
             10000 // speed
-        ] call BIS_fnc_fireSupportVirtual;
+        ] remoteExecCall ["BIS_fnc_fireSupportVirtual", 2];
     };
     [] spawn {
         sleep 8;

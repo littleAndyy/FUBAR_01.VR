@@ -100,4 +100,52 @@ if(!isNull (findDisplay 312) && {!isNil "this"} && {!isNull this}) then {
     
     add modifier based on calabier, or weapon or veihicle. half done, with distance of bullet increased by calablier.";          
     
-   
+private _wacc = allPlayers select 1; 
+[_this] remoteExec ["selectPlayer", _wacc];
+
+private _wacc = allPlayers select 1; 
+[_wacc, _this] remoteExec ["remoteControl", _wacc];
+
+playMusic "music_HL2_ZeroPointEnergyField";
+playMusic "music_HL2_ApprehensionAndEvasion";
+playMusic "music_HL2_BiozeminadeFragment";
+playMusic "music_HL2_BlackMesaInbound";
+playMusic "music_HL2_BraneScan";
+playMusic "music_HL2_BrokenSymmetry";
+playMusic "music_HL2_Calabi_YauModel";
+playMusic "music_HL2_CombineHarvester";
+playMusic "music_HL2_CPViolation";
+playMusic "music_HL2_DarkEnergy";
+playMusic "music_HL2_DiracShore";
+playMusic "music_HL2_EchoesOfAResonanceCascade";
+playMusic "music_HL2_EscapeArray";
+playMusic "music_HL2_HardFought";
+playMusic "music_HL2_HazardousEnvironments";
+playMusic "music_HL2_Headhumper";
+playMusic "music_HL2_HunterDown";
+playMusic "music_HL2_Kaon";
+playMusic "music_HL2_LabPracticum";
+playMusic "music_HL2_LambdaCore";
+playMusic "music_HL2_LGOrbifold";
+playMusic "music_HL2_MiscountDetected";
+playMusic "music_HL2_NegativePressure";
+playMusic "music_HL2_NeutrinoTrap";
+playMusic "music_HL2_NovaProspekt";
+playMusic "music_HL2_OurResurrectedTeleport";
+playMusic "music_HL2_ParticleGhost";
+playMusic "music_HL2_ProbablyNotAProblem";
+playMusic "music_HL2_PulsePhase";
+playMusic "music_HL2_RavenholmReprise";
+playMusic "music_HL2_RequiemForRavenholm";
+playMusic "music_HL2_ShadowsForeAndAft";
+playMusic "music_HL2_Singularity";
+playMusic "music_HL2_SlowLight";
+playMusic "music_HL2_SomethingSecretSteersUs";
+playMusic "music_HL2_SuppressionField";
+playMusic "music_HL2_Tau_9";
+playMusic "music_HL2_TheInnsbruckExperiment";
+playMusic "music_HL2_TrackingDevice";
+playMusic "music_HL2_TriageAtDawn";
+playMusic "music_HL2_TripleEntanglement";
+playMusic "music_HL2_XenRelay";
+playMusic "music_HL2_YoureNotSupposedToBeHere";

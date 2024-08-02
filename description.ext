@@ -61,6 +61,16 @@ class CfgFunctions
 			class objectiveCreate {};
 			class objectiveSide {};
 		};
+		class FUBAR_PvP_Frontline
+		{
+			file = "andia\FUBAR\pvp\frontline_v1";
+			class FL_createObjectives {};
+			class FL_selectObjectives {};
+
+			class FL_createObjective {};
+			class FL_changeObjective {};
+			class FL_unlockObjective {};
+		};
 	};
 };
 

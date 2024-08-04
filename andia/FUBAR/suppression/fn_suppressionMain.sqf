@@ -1,9 +1,6 @@
 if (!hasInterface) exitWith {};
 params ["_unit"];
 
-if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
-	/*Unit is already being suppressed - loop already in progress.*/
-};
 
 if (isNil {_unit getVariable "ANDIA_FUBAR_Suppressed"}) then {
 	_unit setVariable ["ANDIA_FUBAR_Suppressed", true];
@@ -23,9 +20,13 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 			params ["_unit"];
 			_unit setVariable ["ANDIA_FUBAR_Suppressed", false];
 		},
-		[_unit], (0.25*_suppressionValue)] call CBA_fnc_waitAndExecute;
+		[_unit], (0.33*_suppressionValue)] call CBA_fnc_waitAndExecute;
 	},
-	[_unit], 1.5] call CBA_fnc_waitAndExecute;
+	[_unit], 2.5] call CBA_fnc_waitAndExecute;
+};
+
+if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
+	/*Unit is already being suppressed - loop already in progress.*/
 };
 
 private _loop = [{
@@ -38,18 +39,19 @@ private _loop = [{
 	if (_suppressionValue >= 30.00) then {
 		_suppressionValue = 30.00;
 	};
-	if ((_suppressionValue <= 0) || (!alive _unit)) exitWith {
+	if ((_suppressionValue <= 0)) exitWith {
 		//private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
 		_unit setVariable ["ANDIA_FUBAR_SuppressionValue", 0];
-		//_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
+		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
+		[_unit, 0] call andia_fnc_suppressionFX;
 		[_handle] call CBA_fnc_removePerFrameHandler;
 	};
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.00015));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
 		systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.002));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0025));
 		systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];
@@ -72,4 +74,4 @@ private _loop = [{
 	
 
 }, 0, [_unit]] call CBA_fnc_addPerFrameHandler;
-//_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", _loop];
+_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", _loop];

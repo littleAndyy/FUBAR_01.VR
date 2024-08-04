@@ -9,7 +9,7 @@ if (_side == civilian) then {
 };
 
 if ((((_objective getVariable "andia_FL_objectiveData") select 0) != _side)) then {
-    [["Objective", _side, false], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
+    [["", _side, false], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
 };
 private _objectiveData = _objective getVariable "andia_FL_objectiveData";
 _objectiveData set [0, _side];
@@ -25,7 +25,7 @@ private _elapsedTime = _objective getVariable "andia_FL_elapsedTime";
 private _handle = _objective getVariable "andia_FL_objectiveHandle";
 
 if ((_timers#_index) <= 0) exitWith { // IF TIMER HITS 0s == CAPTURED
-    [["Objective", _side, true], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
+    [["", _side, true], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
     _markerInfo setMarkerColor _colour;
     _markerInfo setMarkerText format ["%1 CAPTURED", _side];
     [_handle] call CBA_fnc_removePerFrameHandler;
@@ -77,7 +77,7 @@ if ((_elapsedTime) >= _maximumTime) exitWith { // max time to capture / defend =
     };
     // select the side that has the lowest timer
     _index = (_timers find (selectMin _timers));
-    [["Objective", _side, true], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
+    [["", _side, true], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
     _markerInfo setMarkerColor _colour;
     _markerInfo setMarkerText "CAPTURED";
     //[_handle] call CBA_fnc_removePerFrameHandler; // we want the game to continue

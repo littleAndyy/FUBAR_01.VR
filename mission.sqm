@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=14;
+		nextID=20;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=15;
+		nextID=17;
 	};
 	class Camera
 	{
-		pos[]={3472.4028,10.810385,3066.2488};
-		dir[]={0.020027522,-0.2260087,0.97397149};
-		up[]={0.0046509597,0.97408986,0.22607906};
-		aside[]={0.99983412,-1.569616e-06,-0.020562122};
+		pos[]={3475.343,36.209335,3059.4021};
+		dir[]={0.11034709,-0.69258332,0.71286148};
+		up[]={0.10594629,0.7213397,0.68443};
+		aside[]={0.98823839,-2.0640437e-07,-0.15297341};
 	};
 };
 binarizationWanted=0;
@@ -36,7 +36,7 @@ addons[]=
 {
 	"A3_Characters_F_AoW",
 	"A3_Modules_F_Curator_Curator",
-	"A3_Supplies_F_Heli_CargoNets"
+	"A3_Structures_F_Mil_Helipads"
 };
 class AddonsMetaData
 {
@@ -59,8 +59,8 @@ class AddonsMetaData
 		};
 		class Item2
 		{
-			className="A3_Supplies_F_Heli";
-			name="Arma 3 Helicopters - Ammoboxes and Supplies";
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -68,13 +68,14 @@ class AddonsMetaData
 };
 dlcs[]=
 {
-	"AoW",
-	"Heli"
+	"AoW"
 };
 randomSeed=7421105;
 class ScenarioData
 {
 	author="little andy";
+	respawn=3;
+	respawnDelay=3;
 };
 class CustomAttributes
 {
@@ -278,6 +279,116 @@ class CustomAttributes
 		};
 		nAttributes=15;
 	};
+	class Category1
+	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="ENH_respawnTickets_west";
+			expression="if (!is3DEN && isMultiplayer && isServer) then {[west, _value] call BIS_fnc_respawnTickets}";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=250;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="ENH_respawnTickets_east";
+			expression="if (!is3DEN && isMultiplayer && isServer) then {[east, _value] call BIS_fnc_respawnTickets}";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=250;
+				};
+			};
+		};
+		class Attribute2
+		{
+			property="ENH_respawnTickets_civilian";
+			expression="if (!is3DEN && isMultiplayer && isServer) then {[civilian, _value] call BIS_fnc_respawnTickets}";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=250;
+				};
+			};
+		};
+		class Attribute3
+		{
+			property="ENH_saveLoadout";
+			expression="if (!isMultiplayer || !_value || is3DEN || !hasInterface) exitWith {};    0 spawn    {      waitUntil {sleep 1; !isNull player};      player setVariable ['ENH_savedLoadout', getUnitloadout player];      player addMPEventHandler ['MPRespawn',      {        params ['_unit'];        private _loadout = _unit getVariable ['ENH_savedLoadout', []];        if (_loadout isNotEqualTo []) then {_unit setUnitLoadout _loadout};      }];    };";
+			class Value
+			{
+				class data
+				{
+					singleType="BOOL";
+					value=1;
+				};
+			};
+		};
+		class Attribute4
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					singleType="ARRAY";
+					class value
+					{
+						items=3;
+						class Item0
+						{
+							class data
+							{
+								singleType="STRING";
+								value="MenuPosition";
+							};
+						};
+						class Item1
+						{
+							class data
+							{
+								singleType="STRING";
+								value="Counter";
+							};
+						};
+						class Item2
+						{
+							class data
+							{
+								singleType="STRING";
+								value="TicketsSpawn";
+							};
+						};
+					};
+				};
+			};
+		};
+		class Attribute5
+		{
+			property="ENH_respawnTickets_independent";
+			expression="if (!is3DEN && isMultiplayer && isServer) then {[independent, _value] call BIS_fnc_respawnTickets}";
+			class Value
+			{
+				class data
+				{
+					singleType="SCALAR";
+					value=250;
+				};
+			};
+		};
+		nAttributes=6;
+	};
 };
 class Mission
 {
@@ -300,7 +411,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=3;
+		items=7;
 		class Item0
 		{
 			dataType="Layer";
@@ -693,48 +804,38 @@ class Mission
 		};
 		class Item1
 		{
+			dataType="Trigger";
+			position[]={3475.991,5,3088};
+			class Attributes
+			{
+				onActivation="[[obj_01, obj_02, obj_03, obj_04, obj_05], west, east] execVM ""andia\FUBAR\pvp\frontline_v1\fn_FL_objectivesCreate.sqf"";";
+				sizeA=5;
+				sizeB=5;
+				sizeC=5;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=10;
+			type="EmptyDetectorArea10x10";
+		};
+		class Item2
+		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3477,5.8253026,3088};
+				position[]={3480,5,3088};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
-				name="cache_01";
+				name="obj_01";
 			};
-			id=9;
-			type="B_CargoNet_01_ammo_F";
+			id=14;
+			type="Land_HelipadEmpty_F";
 			class CustomAttributes
 			{
 				class Attribute0
-				{
-					property="HNEG_emed_emtrDieout3ID";
-					expression="false";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="HNEG_emed_emtrDieout4ID";
-					expression="false";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute2
 				{
 					property="HNEG_emed_aedInit";
 					expression=" if (!is3DEN) then { _this call compile _value; }; ";
@@ -747,33 +848,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute3
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[""arifle_MXC_F"",""arifle_MXM_F"",""arifle_MX_F"",""arifle_MX_GL_F"",""arifle_MX_SW_F"",""arifle_SDAR_F"",""hgun_P07_F"",""hgun_Pistol_heavy_01_F"",""launch_NLAW_F"",""launch_Titan_F"",""launch_Titan_short_F"",""SMG_01_F"",""srifle_EBR_F"",""srifle_LRR_camo_F"",""srifle_LRR_F""],[4,2,8,4,4,2,2,2,2,2,2,2,2,2,2]],[[""100Rnd_65x39_caseless_mag_Tracer"",""11Rnd_45ACP_Mag"",""16Rnd_9x21_Mag"",""1Rnd_HE_Grenade_shell"",""1Rnd_SmokeBlue_Grenade_shell"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokePurple_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""20Rnd_556x45_UW_mag"",""20Rnd_762x51_Mag"",""30Rnd_45ACP_Mag_SMG_01"",""30Rnd_556x45_Stanag_red"",""30Rnd_65x39_caseless_mag"",""3Rnd_HE_Grenade_shell"",""7Rnd_408_Mag"",""APERSBoundingMine_Range_Mag"",""APERSMine_Range_Mag"",""APERSTripMine_Wire_Mag"",""ATMine_Range_Mag"",""B_IR_Grenade"",""ClaymoreDirectionalMine_Remote_Mag"",""DemoCharge_Remote_Mag"",""HandGrenade"",""Laserbatteries"",""MiniGrenade"",""NLAW_F"",""SatchelCharge_Remote_Mag"",""SLAMDirectionalMine_Wire_Mag"",""SmokeShell"",""SmokeShellBlue"",""SmokeShellGreen"",""SmokeShellOrange"",""SmokeShellPurple"",""SmokeShellRed"",""SmokeShellYellow"",""Titan_AA"",""Titan_AP"",""Titan_AT"",""UGL_FlareGreen_F"",""UGL_FlareWhite_F""],[16,14,14,15,2,2,2,2,2,2,2,6,24,14,6,52,3,12,5,5,5,5,8,5,5,24,5,24,8,5,5,2,2,2,2,2,2,2,6,6,6,2,2]],[[""Binocular"",""Laserdesignator"",""Rangefinder"",""acc_flashlight"",""acc_pointer_IR"",""FirstAidKit"",""ItemGPS"",""Medikit"",""MineDetector"",""muzzle_snds_acp"",""muzzle_snds_B"",""muzzle_snds_H"",""muzzle_snds_H_SW"",""muzzle_snds_L"",""optic_Aco"",""optic_Aco_smg"",""optic_DMS"",""optic_Hamr"",""optic_Holosight"",""optic_LRPS"",""optic_MRD"",""optic_NVS"",""optic_SOS"",""optic_tws"",""optic_tws_mg"",""ToolKit""],[1,1,1,5,5,10,5,1,1,5,5,5,1,5,2,2,2,2,2,2,2,2,2,2,2,1]],[[],[]]],false]";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="HNEG_emed_emtrDieout1ID";
-					expression="false";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute5
+				class Attribute1
 				{
 					property="HNEG_emed_emitterInit";
 					expression=" if (!is3DEN) then { _this call compile _value; }; ";
@@ -786,7 +861,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute6
+				class Attribute2
 				{
 					property="HNEG_emed_emtrDieout2ID";
 					expression="false";
@@ -799,25 +874,435 @@ class Mission
 						};
 					};
 				};
-				nAttributes=7;
+				class Attribute3
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=6;
 			};
 		};
-		class Item2
+		class Item3
 		{
-			dataType="Trigger";
-			position[]={3475.991,5,3088};
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3654,5,3088};
+			};
+			side="Empty";
 			class Attributes
 			{
-				onActivation="[cache_01, 50, true] execVM ""andia\FUBAR\pvp\fn_objectiveCreate.sqf"";";
-				sizeA=5;
-				sizeB=5;
-				sizeC=5;
-				activationBy="ANYPLAYER";
-				isRectangle=1;
-				isServerOnly=1;
+				name="obj_02";
 			};
-			id=10;
-			type="EmptyDetectorArea10x10";
+			id=15;
+			type="Land_HelipadEmpty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="HNEG_emed_aedInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="HNEG_emed_emitterInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="HNEG_emed_emtrDieout2ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=6;
+			};
+		};
+		class Item4
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3825,5,3088};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="obj_03";
+			};
+			id=16;
+			type="Land_HelipadEmpty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="HNEG_emed_aedInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="HNEG_emed_emitterInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="HNEG_emed_emtrDieout2ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=6;
+			};
+		};
+		class Item5
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4017,5,3088};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="obj_04";
+			};
+			id=17;
+			type="Land_HelipadEmpty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="HNEG_emed_aedInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="HNEG_emed_emitterInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="HNEG_emed_emtrDieout2ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=6;
+			};
+		};
+		class Item6
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4184,5,3088};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="obj_05";
+			};
+			id=18;
+			type="Land_HelipadEmpty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="HNEG_emed_aedInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="HNEG_emed_emitterInit";
+					expression=" if (!is3DEN) then { _this call compile _value; }; ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="true";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="HNEG_emed_emtrDieout2ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="HNEG_emed_emtrDieout1ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="HNEG_emed_emtrDieout4ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="HNEG_emed_emtrDieout3ID";
+					expression="false";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=6;
+			};
 		};
 	};
 };

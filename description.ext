@@ -52,24 +52,31 @@ class CfgFunctions
 			class SFX_largeImpactExpl {};
 			class impactGibs {};
 		};
-		class FUBAR_PvP
+		/*class FUBAR_PvP_deprecated
 		{
-			file = "andia\FUBAR\pvp";
+			file = "andia\FUBAR\pvp\deprecated_v1";
 			class explodeCache {};
 			class explodeCacheFX {};
 			class explodeCacheAction {};
 			class objectiveCreate {};
 			class objectiveSide {};
-		};
-		class FUBAR_PvP_Frontline
-		{
-			file = "andia\FUBAR\pvp\frontline_v1";
 			class FL_createObjectives {};
 			class FL_selectObjectives {};
-
 			class FL_createObjective {};
 			class FL_changeObjective {};
 			class FL_unlockObjective {};
+		};*/
+		class FUBAR_PvP_Frontline
+		{
+			file = "andia\FUBAR\pvp\frontline_v1";
+			class FL_cacheAction {};
+			class FL_cacheExplode {};
+			class FL_cacheExplodeFX {};
+			class FL_gameMain {};
+			class FL_markerCreate {};
+			class FL_objectivesCreate {};
+			class FL_objectiveCreate {};
+			class FL_objectiveUpdate {};
 		};
 	};
 };

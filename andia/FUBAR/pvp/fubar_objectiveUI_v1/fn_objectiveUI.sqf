@@ -14,6 +14,9 @@ _colour set [3, 0.5];
 waitUntil {!isNull (uiNameSpace getVariable "andia_fubar_objectiveUI")};
 private _display = uiNameSpace getVariable "andia_fubar_objectiveUI";
 _setText = _display displayCtrl 3499;
+if (_side == civilian) then {
+    _setText ctrlSetText format ["New Objective %1 is now active!", _name];
+};
 if (!_isCaptured) then {
     _setText ctrlSetText format ["Objective %1 is being captured by %2!", _name, _side];
     if (_isContested) then {

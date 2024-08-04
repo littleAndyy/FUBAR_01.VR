@@ -39,7 +39,7 @@ openMap [true,true];
             0, // safezone
             250, // altitude
             100 // speed
-        ] call BIS_fnc_fireSupportVirtual;
+        ] remoteExec ["BIS_fnc_fireSupportVirtual", 2];
     };
     [] spawn {
         sleep 3;
@@ -51,6 +51,7 @@ openMap [true,true];
                 "andia\FUBAR\support\sound\Mortar_81mm_fire_far_04.ogg",
                 "andia\FUBAR\support\sound\Mortar_81mm_fire_far_05.ogg"
             ];
+            [[0.5,0.5,12]] remoteExec ["addCamShake", [0,-2] select isDedicated];
             [[(getMissionPath _rndSound), 0.66, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
             sleep 3;
         };

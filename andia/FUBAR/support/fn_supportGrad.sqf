@@ -32,14 +32,14 @@ openMap [true,true];
         [
             _pos, // target
             "Rocket_04_HE_F", // ammo
-            280, // radius
+            250, // radius
             40, // rounds
-            [0.3,1.1], // delay
+            [0.4,1.2], // delay
             {false}, // conditionEnd
-            20, // safezone
-            220, // altitude
+            25, // safezone
+            200, // altitude
             10000 // speed
-        ] remoteExecCall ["BIS_fnc_fireSupportVirtual", 2];
+        ] remoteExec ["BIS_fnc_fireSupportVirtual", 2];
     };
     [] spawn {
         sleep 8;
@@ -52,6 +52,7 @@ openMap [true,true];
                 "andia\FUBAR\support\sound\bm21_fire_far_05.ogg",
                 "andia\FUBAR\support\sound\bm21_fire_far_06.ogg"
             ];
+            [[0.7,0.7,9]] remoteExec ["addCamShake", [0,-2] select isDedicated];
             [[(getMissionPath _rndSound), 0.4, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
             sleep (random [0.3,0.4,1.1]);
         };

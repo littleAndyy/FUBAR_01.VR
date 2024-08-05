@@ -10,11 +10,11 @@ if (_defendingSide == civilian) then {
 
 _marker = createMarker [(format ["ANDIA_FL_AREA-MARKER_%1", random 99999]), (getPos _object)];
 _marker setMarkerShape "ELLIPSE";
-_marker setMarkerSize [75, 75];
+_marker setMarkerSize [125, 125];
 _marker setMarkerColor _colour;
 _marker setMarkerAlpha 0.5;
 if (_isActive) then {
-    _marker setMarkerBrush "SolidFull";
+    _marker setMarkerBrush "SolidBorder";
 } else {
     _marker setMarkerBrush "Vertical";
 };

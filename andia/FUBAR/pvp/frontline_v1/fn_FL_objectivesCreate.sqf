@@ -1,6 +1,10 @@
 /*
     example: 
     [[obj_01, obj_02, obj_03, obj_04, obj_05], west, east] execVM "andia\FUBAR\pvp\frontline_v1\fn_FL_objectivesCreate.sqf";
+    
+[[[obj_01, obj_02, obj_03, obj_04, obj_05, obj_06, obj_07], west, east], "andia\FUBAR\pvp\frontline_v1\fn_FL_objectivesCreate.sqf"
+] remoteExecCall ["execVM", 2];
+
 */
 
 if (!isServer) exitWith {};
@@ -9,6 +13,7 @@ private _numObjectives = (count _objects);
 if ((_numObjectives % 2) == 0) exitWith {
     // number of objectives must be odd
 };
+missionNameSpace setVariable ["andia_FL_sides", [_side1, _side2]];
 _numObjectives = _numObjectives - 1;
 for "_i" from 0 to _numObjectives do {
     [{
@@ -40,7 +45,7 @@ for "_i" from 0 to _numObjectives do {
         [
             _index,
             (_objects select _index),
-            20, // 300s default
+            600, // 300s default
             [_defendingSide, _attackingSide],
             _isActive,
             _isHQ

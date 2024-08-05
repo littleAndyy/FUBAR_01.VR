@@ -1,6 +1,13 @@
 if (!isServer) exitWith {};
 params ["_order", "_object", ["_captureTime", 600], "_sides", "_isActive", "_isHQ"];
 
+if (((typeOf _object) == "Sign_Arrow_Large_F") || ((typeOf _object) == "Land_HelipadEmpty_F")) then {
+    _object enableSimulationGlobal true;
+    _object hideObjectGlobal false;
+    _object allowDamage false;
+    _object setPosATL (_object modelToWorld [0,0,-10]);
+};
+
 if (isNil {missionNameSpace getVariable "andia_FL_objectives"}) then {
     missionNameSpace setVariable ["andia_FL_objectives", []];
 };
@@ -31,8 +38,8 @@ _object setVariable ["andia_FL_objective_spawnPoint", _respawn];
 
 if (_isHQ) then {
     private _randomCacheTypes = ["RuggedTerminal_01_communications_F", "RuggedTerminal_02_communications_F", "RuggedTerminal_01_F"];
-    private _bomb1 = createVehicle [(selectRandom _randomCacheTypes), (getPos _object), [], 35, "NONE"];
-    private _bomb2 = createVehicle [(selectRandom _randomCacheTypes), (getPos _object), [], 35, "NONE"];
+    private _bomb1 = createVehicle [(selectRandom _randomCacheTypes), (getPos _object), [], 45, "NONE"];
+    private _bomb2 = createVehicle [(selectRandom _randomCacheTypes), (getPos _object), [], 45, "NONE"];
     private _bombs = [_bomb1, _bomb2];
     {
         _x enableSimulationGlobal false;
@@ -54,16 +61,12 @@ private _handle = [{
     private _isHQ = _object getVariable "andia_FL_objective_isHQ";
     private _respawn = _object getVariable "andia_FL_objective_spawnPoint";
     private _bombs = _object getVariable "andia_FL_objective_caches";
-    
+
+    if (_isActive) then {
+        _respawn remoteExec ["BIS_fnc_removeRespawnPosition", 2];
+    };
     if (_isHQ) then {
         [_currentSide, _object, _marker] remoteExecCall ["andia_fnc_FL_objectiveUpdate", 2];
-    };
-    
-    if (_isActive) then {
-        if (_respawn isEqualTo []) exitWith {
-            // respawn point has already been removed
-        };
-        _respawn call BIS_fnc_removeRespawnPosition;
     };
 
     if (!_isHQ && _isActive) then {

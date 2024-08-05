@@ -91,6 +91,6 @@ _colour ppEffectAdjust
 ];
 _colour ppEffectCommit 0;
 
-private _shakePower = _suppressionValue * 0.5;
+private _shakePower = _suppressionValue * 0.33;
 if (_shakePower >= 4.5) then {_shakePower = 4.5};
 addCamShake [_shakePower, 0.5, (0.35*_shakePower)];

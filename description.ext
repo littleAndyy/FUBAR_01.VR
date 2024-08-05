@@ -77,6 +77,7 @@ class CfgFunctions
 			class FL_objectivesCreate {};
 			class FL_objectiveCreate {};
 			class FL_objectiveUpdate {};
+			class FL_teleporter {};
 		};
 	};
 };

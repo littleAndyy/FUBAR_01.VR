@@ -7,6 +7,12 @@ if (_side == civilian) then {
     _colour = "ColorWhite";
 };
 
+_isActive = _object getVariable "andia_FL_objective_isActive";
+private _respawn = _object getVariable "andia_FL_objective_spawnPoint";
+if (_isActive) then {
+    _respawn remoteExec ["BIS_fnc_removeRespawnPosition", 2];
+};
+
 private _isHQ = _object getVariable "andia_FL_objective_isHQ";
 if (_isHQ) exitWith {
     private _bombs = _object getVariable "andia_FL_objective_caches";
@@ -64,15 +70,15 @@ if ((_timers#_index) <= 0) exitWith {
 
     private _nextObjective = (_objectives select _index);
     _nextObjective setVariable ["andia_FL_objective_isActive", true];
-    (_nextObjective getVariable "andia_FL_objective_marker") setMarkerBrush "SolidFull";
+    (_nextObjective getVariable "andia_FL_objective_marker") setMarkerBrush "SolidBorder";
 
     // ! _object is now the captured objective !
     _object setVariable ["andia_FL_objective_currentSide", _side];
 
     // // TODO: Add spawnpoints!
     // New respawn point! Remove the old one, add the new one to the victors.
-    private _respawn = _object getVariable "andia_FL_objective_spawnPoint";
-    _respawn call BIS_fnc_removeRespawnPosition;
+    _respawn = _object getVariable "andia_FL_objective_spawnPoint";
+    _respawn remoteExec ["BIS_fnc_removeRespawnPosition", 2];
     _markerInfo setMarkerText "";
     [{
         params ["_object", "_side"];

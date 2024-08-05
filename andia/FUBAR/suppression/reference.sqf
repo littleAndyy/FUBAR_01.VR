@@ -149,3 +149,9 @@ playMusic "music_HL2_TriageAtDawn";
 playMusic "music_HL2_TripleEntanglement";
 playMusic "music_HL2_XenRelay";
 playMusic "music_HL2_YoureNotSupposedToBeHere";
+
+{
+   _x enableSimulationGlobal true;
+   _x hideObjectGlobal false;
+   _x setPosATL (_x modelToWorld [0,0,-5]);
+} forEach [obj_01, obj_02, obj_03, obj_04, obj_05, obj_06, obj_07];

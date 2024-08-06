@@ -8,6 +8,9 @@ if (isNil {_obj getVariable "andia_FL_cache_marker"}) then {
     _obj setVariable ["andia_FL_cache_marker", _marker, true];
 };
 
+_obj setVectorUp surfaceNormal (getPosATL _obj); 
+_obj setVehiclePosition [getPos _obj,[],0,"none"];
+
 private _duration = 5; // action duration
 
 if (!_isArmed) then {

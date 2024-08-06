@@ -23,6 +23,9 @@ if (_isHQ) exitWith {
         _marker setMarkerBrush "Vertical";
         [["HQ Objective", _side, true], "andia\FUBAR\pvp\fubar_objectiveUI_v1\fn_objectiveUI.sqf"] remoteExecCall ["execVM", [0,-2] select isDedicated];
         titleText [format ["HQ Objective Caches destroyed. %1 wins.", _side], "PLAIN DOWN", 5];
+        _object setVariable ["andia_FL_objective_isActive", false];
+        private _handle = _object getVariable "andia_FL_objective_handler";
+        [_handle] call CBA_fnc_removePerFrameHandler;
     };
 };
 

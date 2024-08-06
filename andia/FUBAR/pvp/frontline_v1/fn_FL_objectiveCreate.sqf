@@ -98,3 +98,4 @@ private _handle = [{
 }, 1, // delay 
 [_object] // parameters (_args)
 ] call CBA_fnc_addPerFrameHandler;
+_object setVariable ["andia_FL_objective_handler", _handle];

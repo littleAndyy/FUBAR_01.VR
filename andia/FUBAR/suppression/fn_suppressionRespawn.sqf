@@ -12,6 +12,7 @@ removeMissionEventHandler ["ProjectileCreated", (_corpse getVariable "ANDIA_FUBA
 };
 
 // reverted ...
+
 /* OLD "new" CODE
 if (!hasInterface) exitWith {};
 params ["_unit", "_corpse", "_eventHandlerType", "_eventHandlerID"];

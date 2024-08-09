@@ -36,7 +36,7 @@ if (!_isArmed) then {
                         _isArmed = (_obj getVariable "andia_fnc_explodeCache_armed");
                         sleep 1;
                         playSound3D [(getMissionPath "andia\FUBAR\pvp\sound\bomb_beep.ogg"), _obj, false, getPosASL _obj, 0.5, 1, 25];
-                        systemChat format ["Explosives armed! %1", _i]; // debug
+                        //systemChat format ["Explosives armed! %1", _i]; // debug
                         _markerInfo setMarkerText format ["%1s, %2", (str (_timer - _i)), (_obj getVariable "andia_fnc_objectiveName")];
                         if ((_isArmed == true) && (_i == _timer)) then {
                             [_side, _obj, _marker, _markerInfo, false, true] remoteExecCall ["andia_fnc_objectiveSide", 2];

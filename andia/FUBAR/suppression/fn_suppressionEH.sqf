@@ -31,7 +31,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         _projectileClass = typeOf _projectile;
         private _caliberSize = getNumber (configFile >> "CfgAmmo" >> _projectileClass >> "caliber");
-        systemChat format ["_projectile: %1, caliber: %2", _projectile, _caliberSize];
+        //systemChat format ["_projectile: %1, caliber: %2", _projectile, _caliberSize];
 
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
@@ -63,7 +63,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));
-        hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
+        //hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
 
         [(ASLtoATL _pos), _size, _velocity] call andia_fnc_explCloseFX;
         if (_size > 2970) then {

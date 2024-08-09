@@ -138,7 +138,7 @@ drop
 
 /*private _lightPFH = ([{
     params ["_args"];
-    systemChat str _args;
+    //systemChat str _args;
     private _obj = _args#0;
     private _light = _args#1;
     private _fxArray = _obj getVariable "andia_explodeCacheFX";

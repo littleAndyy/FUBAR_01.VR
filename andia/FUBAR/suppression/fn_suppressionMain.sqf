@@ -47,13 +47,13 @@ private _loop = [{
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
-		systemChat "Suppression has been reduced.";
+		//systemChat "Suppression has been reduced.";
 	} else {
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.003));
-		systemChat "Suppression normalised.";
+		//systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];
-	systemChat format ["Suppression: %1", _suppressionValue];
+	//systemChat format ["Suppression: %1", _suppressionValue];
 
 	if ((_suppressionValue >= 10) && ((_unit getVariable "ANDIA_FUBAR_Deafness") == false)) then {
 		_unit setVariable ["ANDIA_FUBAR_Deafness", true];

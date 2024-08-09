@@ -31,10 +31,10 @@ openMap [true,true];
         sleep 48;
         [
             _pos, // target
-            "Rocket_04_HE_F", // ammo
+            "Rocket_03_HE_F", // ammo
             250, // radius
             40, // rounds
-            [0.4,1.2], // delay
+            [0.2,0.9], // delay
             {false}, // conditionEnd
             25, // safezone
             200, // altitude
@@ -43,7 +43,9 @@ openMap [true,true];
     };
     [] spawn {
         sleep 8;
-        for "_i" from 1 to 40 do {
+        [[(getMissionPath "andia\FUBAR\support\sound\Katyusha_Launch_Explosion.ogg"), 0.9, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+        addCamShake [0.7,5.5,35];
+        /*for "_i" from 1 to 40 do {
             private _rndSound = selectRandom [
                 "andia\FUBAR\support\sound\bm21_fire_far_02.ogg",
                 "andia\FUBAR\support\sound\bm21_fire_far_02.ogg",
@@ -55,7 +57,7 @@ openMap [true,true];
             [[0.7,0.7,9]] remoteExec ["addCamShake", [0,-2] select isDedicated];
             [[(getMissionPath _rndSound), 0.4, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
             sleep (random [0.3,0.4,1.1]);
-        };
+        };*/
     };
     ["rocket_support", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 }] call BIS_fnc_addStackedEventHandler;

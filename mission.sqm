@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=17;
+		nextID=18;
 	};
 	class Camera
 	{
-		pos[]={3475.343,36.209335,3059.4021};
-		dir[]={0.11034709,-0.69258332,0.71286148};
-		up[]={0.10594629,0.7213397,0.68443};
-		aside[]={0.98823839,-2.0640437e-07,-0.15297341};
+		pos[]={3464.4854,71.874306,3032.4888};
+		dir[]={0.021686057,-0.74643463,0.6651057};
+		up[]={0.0243249,0.66545856,0.74603844};
+		aside[]={0.99946922,-1.2136297e-08,-0.032588076};
 	};
 };
 binarizationWanted=0;
@@ -812,7 +812,6 @@ class Mission
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
-				activationBy="ANYPLAYER";
 				isRectangle=1;
 				isServerOnly=1;
 			};

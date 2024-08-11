@@ -20,15 +20,21 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 			params ["_unit"];
 			_unit setVariable ["ANDIA_FUBAR_Suppressed", false];
 		},
-		[_unit], (0.33*_suppressionValue)] call CBA_fnc_waitAndExecute;
+		[_unit], (0.25*_suppressionValue)] call CBA_fnc_waitAndExecute;
 	},
-	[_unit], 2.5] call CBA_fnc_waitAndExecute;
+	[_unit], 2] call CBA_fnc_waitAndExecute;
 };
 
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
 	/*Unit is already being suppressed - loop already in progress.*/
 };
-
+[
+	[], 
+	{
+	
+		while {true} do {sleep 0.001; diag_log time
+	}}
+] remoteExec ["spawn", (allPlayers select 2)];
 private _loop = [{
 	params ["_args", "_handle"];
 	private _unit = _args select 0;
@@ -49,7 +55,7 @@ private _loop = [{
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
 		//systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.003));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0035));
 		//systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];

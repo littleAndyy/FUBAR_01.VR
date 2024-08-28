@@ -28,13 +28,7 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
 	/*Unit is already being suppressed - loop already in progress.*/
 };
-[
-	[], 
-	{
-	
-		while {true} do {sleep 0.001; diag_log time
-	}}
-] remoteExec ["spawn", (allPlayers select 2)];
+
 private _loop = [{
 	params ["_args", "_handle"];
 	private _unit = _args select 0;

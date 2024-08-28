@@ -34,17 +34,17 @@ openMap [true,true];
             "Rocket_03_HE_F", // ammo
             250, // radius
             40, // rounds
-            [0.2,0.9], // delay
+            [0.2,1.1], // delay
             {false}, // conditionEnd
             25, // safezone
-            200, // altitude
+            100, // altitude
             10000 // speed
         ] remoteExec ["BIS_fnc_fireSupportVirtual", 2];
     };
     [] spawn {
         sleep 8;
         [[(getMissionPath "andia\FUBAR\support\sound\Katyusha_Launch_Explosion.ogg"), 0.9, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
-        addCamShake [0.7,5.5,35];
+        //addCamShake [0.7,5.5,35];
         /*for "_i" from 1 to 40 do {
             private _rndSound = selectRandom [
                 "andia\FUBAR\support\sound\bm21_fire_far_02.ogg",

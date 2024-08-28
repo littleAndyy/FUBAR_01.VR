@@ -5,14 +5,14 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=5;
+	toggles=37;
 	mods[]=
 	{
 		"3denEnhanced"
 	};
 	class ItemIDProvider
 	{
-		nextID=20;
+		nextID=22;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=18;
+		nextID=19;
 	};
 	class Camera
 	{
-		pos[]={3464.4854,71.874306,3032.4888};
-		dir[]={0.021686057,-0.74643463,0.6651057};
-		up[]={0.0243249,0.66545856,0.74603844};
-		aside[]={0.99946922,-1.2136297e-08,-0.032588076};
+		pos[]={3474.5017,12.250517,3079.0127};
+		dir[]={0.36990899,-0.56197387,0.73983788};
+		up[]={0.25131759,0.82715493,0.50264972};
+		aside[]={0.89443624,-1.6053673e-07,-0.44720572};
 	};
 };
 binarizationWanted=0;
@@ -36,13 +36,15 @@ addons[]=
 {
 	"A3_Characters_F_AoW",
 	"A3_Modules_F_Curator_Curator",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Structures_F_Mil_Helipads",
+	"A3_Weapons_F_Explosives",
+	"A3_Modules_F_Multiplayer"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=5;
 		class Item0
 		{
 			className="A3_Characters_F_AoW";
@@ -61,6 +63,20 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -411,7 +427,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=7;
+		items=9;
 		class Item0
 		{
 			dataType="Layer";
@@ -456,7 +472,7 @@ class Mission
 										class data
 										{
 											singleType="BOOL";
-											value=0;
+											value=1;
 										};
 									};
 								};
@@ -1301,6 +1317,101 @@ class Mission
 					};
 				};
 				nAttributes=6;
+			};
+		};
+		class Item7
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3481,5,3088};
+				angles[]={-0,1.5707961,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=20;
+			type="APERSTripMine";
+		};
+		class Item8
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={3468,5,3088};
+			};
+			id=21;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="test";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
 			};
 		};
 	};

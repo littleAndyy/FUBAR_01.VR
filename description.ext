@@ -59,6 +59,8 @@ class CfgFunctions
 			class FL_cacheAction {};
 			class FL_cacheExplode {};
 			class FL_cacheExplodeFX {};
+			//class FL_deathInit {};
+			//class FL_deathScreen {};
 			class FL_gameMain {};
 			class FL_markerCreate {};
 			class FL_objectivesCreate {};
@@ -90,6 +92,13 @@ class CfgCommunicationMenu
 	{
 		text = "Rocket Artillery Firesupport (Map 20m)"; // Text displayed in the menu and in a notification
 		expression = "[player] execVM 'andia\FUBAR\support\fn_supportGrad.sqf';"; // Code executed upon activation
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa"; // Icon displayed permanently next to the command menu
+		removeAfterExpressionCall = 0; // 1 to remove the item after calling
+	};
+	class andia_hartillery_support
+	{
+		text = "Heavy Artillery Firesupport (Map 10m)"; // Text displayed in the menu and in a notification
+		expression = "[player] execVM 'andia\FUBAR\support\fn_supportArtillery.sqf';"; // Code executed upon activation
 		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa"; // Icon displayed permanently next to the command menu
 		removeAfterExpressionCall = 0; // 1 to remove the item after calling
 	};

@@ -1,4 +1,4 @@
-//[player, [missionNamespace, "inventory_var"]] call BIS_fnc_saveInventory;
+[player, [missionNamespace, "inventory_var"]] call BIS_fnc_saveInventory; // TODO: temporary
 
 params ["_oldUnit", "_killer", "_respawn", "_respawnDelay"];
 

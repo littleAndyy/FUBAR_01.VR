@@ -1,11 +1,10 @@
 if (!hasInterface) exitWith {};
-params ["_unit"];
+params ["_unit", ["_delay", 1200]];
 
 private _name = name _unit;
 private _side = side _unit;
 private _cooldownSide = format ["andia_grad_cooldown_%1", _side];
 private _cooldown = missionNamespace getVariable _cooldownSide;
-private _delay = 1200;
 
 if (!isNil {_cooldown}) exitWith {
     {

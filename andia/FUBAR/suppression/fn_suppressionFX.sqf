@@ -60,14 +60,20 @@ private _vignette = (_FXArray#1);
 private _grain = (_FXArray#2);
 private _colour = (_FXArray#3);
 
-
-_blur ppEffectAdjust [0.3 * _suppressionValue];
-_blur ppEffectCommit 0;
+if (_suppressionValue >= 5) then {
+	// only heavy suppression (>5) will apply blur
+	// 0.04*(10-5) = 0.2
+	_blur ppEffectAdjust [0.04 * (_suppressionValue - 5)]; 
+	_blur ppEffectCommit 1.5;
+} else {
+	_blur ppEffectAdjust [0];
+	_blur ppEffectCommit 1.5;
+};
 
 private _vignetteValue = (1 - (_suppressionValue * 0.05));
 if (_vignetteValue <= 0.4) then {_vignetteValue = 0.4};
 _vignette ppEffectAdjust [0,0,0,[0,0,0,0],[0,1,1,1],[0,0.33,0.33,0],[_vignetteValue,_vignetteValue,0,0,0,0,2]];
-_vignette ppEffectCommit 0;
+_vignette ppEffectCommit 1;
 
 _grain ppEffectAdjust [
 	(0.01*_suppressionValue), //intensity
@@ -89,7 +95,7 @@ _colour ppEffectAdjust
 	[0.299, 0.587, 0.114, 0],
 	[-1, -1, 0, 0, 0, 0, 0]
 ];
-_colour ppEffectCommit 0;
+_colour ppEffectCommit 1;
 
 /*
 private _shakePower = _suppressionValue * 0.33;

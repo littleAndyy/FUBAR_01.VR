@@ -1,11 +1,10 @@
 if (!hasInterface) exitWith {};
-params ["_unit"];
+params ["_unit", ["_delay", 600]];
 
 private _name = name _unit;
 private _side = side _unit;
 private _cooldownSide = format ["andia_hartillery_cooldown_%1", _side];
 private _cooldown = missionNamespace getVariable _cooldownSide;
-private _delay = 600;
 
 if (!isNil {_cooldown}) exitWith {
     {
@@ -22,7 +21,7 @@ openMap [true,true];
     _side = side player;
     {
         if (side _x == _side) then {
-            [(format ["%1 - %2 has called in heavy artillery. 20m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
+            [(format ["%1 - %2 has called in heavy artillery. 10m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
         };
     } forEach allPlayers;
     openMap [false,false];
@@ -59,10 +58,10 @@ openMap [true,true];
             "andia\FUBAR\support\sound\artillery_hll_amb_21.ogg"
         ];
         sleep 6;
-        [[(getMissionPath _rndSound), 1, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+        [[(getMissionPath _rndSound), 3, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
         //addCamShake [0.9,3.5,30];
         sleep 24;
-        [[(getMissionPath "andia\FUBAR\support\sound\artillery_hll_amb_20.ogg"), 1, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+        [[(getMissionPath "andia\FUBAR\support\sound\artillery_hll_amb_20.ogg"), 3, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
         //addCamShake [0.9,3.5,30];
     };
     ["hartillery_support", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;

@@ -1,11 +1,10 @@
 if (!hasInterface) exitWith {};
-params ["_unit"];
+params ["_unit", ["_delay", 300]];
 
 private _name = name _unit;
 private _side = side _unit;
 private _cooldownSide = format ["andia_mortar_cooldown_%1", _side];
 private _cooldown = missionNamespace getVariable _cooldownSide;
-private _delay = 300;
 
 if (!isNil {_cooldown}) exitWith {
     {
@@ -52,7 +51,7 @@ openMap [true,true];
                 "andia\FUBAR\support\sound\Mortar_81mm_fire_far_05.ogg"
             ];
             [[0.5,0.5,12]] remoteExec ["addCamShake", [0,-2] select isDedicated];
-            [[(getMissionPath _rndSound), 0.66, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+            [[(getMissionPath _rndSound), 0.8, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
             sleep 3;
         };
     };

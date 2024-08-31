@@ -2,7 +2,7 @@ if (!hasInterface) exitWith {};
 if (floor (random 2) == 0) exitWith {};
 params ["_pos", "_size", "_velocityVector"];
 
-_velocityVector = _velocityVector vectorMultiply (random [-0.11,0.03,0.11]);
+_velocityVector = _velocityVector vectorMultiply (random [-0.18,0.08,0.18]);
 
 private _light = "#lightpoint" createVehicleLocal _pos;
 _light setLightColor [1, (random [0.5,0.6,1]), (random [0.1,0.2,0.4])];

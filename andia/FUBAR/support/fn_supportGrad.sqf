@@ -21,7 +21,7 @@ openMap [true,true];
     _side = side player;
     {
         if (side _x == _side) then {
-            [(format ["%1 - %2 has called in rocket artillery. 20m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
+            [(format ["%1 - %2 has called in rocket artillery.", _side, _name])] remoteExec ["hintSilent", _x];
         };
     } forEach allPlayers;
     openMap [false,false];
@@ -42,7 +42,7 @@ openMap [true,true];
     };
     [] spawn {
         sleep 8;
-        [[(getMissionPath "andia\FUBAR\support\sound\Katyusha_Launch_Explosion.ogg"), 0.9, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+        [[(getMissionPath "andia\FUBAR\support\sound\Katyusha_Launch_Explosion.ogg"), 1.1, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
         //addCamShake [0.7,5.5,35];
         /*for "_i" from 1 to 40 do {
             private _rndSound = selectRandom [

@@ -21,7 +21,7 @@ openMap [true,true];
     _side = side player;
     {
         if (side _x == _side) then {
-            [(format ["%1 - %2 has called in mortar support. 5m cooldown!", _side, _name])] remoteExec ["hintSilent", _x];
+            [(format ["%1 - %2 has called in mortar support.", _side, _name])] remoteExec ["hintSilent", _x];
         };
     } forEach allPlayers;
     openMap [false,false];
@@ -51,7 +51,7 @@ openMap [true,true];
                 "andia\FUBAR\support\sound\Mortar_81mm_fire_far_05.ogg"
             ];
             [[0.5,0.5,12]] remoteExec ["addCamShake", [0,-2] select isDedicated];
-            [[(getMissionPath _rndSound), 0.8, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
+            [[(getMissionPath _rndSound), 0.9, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
             sleep 3;
         };
     };

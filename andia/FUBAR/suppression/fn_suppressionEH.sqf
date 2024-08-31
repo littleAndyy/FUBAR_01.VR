@@ -44,8 +44,8 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
             [(ASLToATL _pos), _velocity, _caliberSize] call andia_fnc_impactSparks;
             if (_distance <= 3.5) then {
                 private _shakePower = _suppression * 0.33;
-                if (_shakePower >= 4.5) then {_shakePower = 4.5};
-                addCamShake [_shakePower, 0.8, (0.35*_shakePower)];
+                if (_shakePower >= 3.5) then {_shakePower = 3.5};
+                addCamShake [_shakePower, 0.9, (0.15*_shakePower)];
             };
         };
 

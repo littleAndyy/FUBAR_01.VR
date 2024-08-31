@@ -60,7 +60,7 @@ private _vignette = (_FXArray#1);
 private _grain = (_FXArray#2);
 private _colour = (_FXArray#3);
 
-if (_suppressionValue >= 5) then {
+if (_suppressionValue > 5) then {
 	// only heavy suppression (>5) will apply blur
 	// 0.04*(10-5) = 0.2
 	_blur ppEffectAdjust [0.04 * (_suppressionValue - 5)]; 

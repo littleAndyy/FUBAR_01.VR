@@ -31,12 +31,12 @@ openMap [true,true];
         [
             _pos, // target
             "Rocket_03_HE_F", // ammo
-            250, // radius
+            220, // radius
             40, // rounds
             [0.2,1.1], // delay
             {false}, // conditionEnd
-            25, // safezone
-            100, // altitude
+            20, // safezone
+            150, // altitude
             10000 // speed
         ] remoteExec ["BIS_fnc_fireSupportVirtual", 2];
     };

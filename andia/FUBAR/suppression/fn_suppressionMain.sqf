@@ -20,9 +20,9 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 			params ["_unit"];
 			_unit setVariable ["ANDIA_FUBAR_Suppressed", false];
 		},
-		[_unit], (0.1*_suppressionValue)] call CBA_fnc_waitAndExecute;
+		[_unit], (0.15*_suppressionValue)] call CBA_fnc_waitAndExecute;
 	},
-	[_unit], 1.1] call CBA_fnc_waitAndExecute;
+	[_unit], 1.2] call CBA_fnc_waitAndExecute;
 };
 
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
@@ -46,10 +46,10 @@ private _loop = [{
 	};
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.00035));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0003));
 		//systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0035));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0025));
 		//systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];

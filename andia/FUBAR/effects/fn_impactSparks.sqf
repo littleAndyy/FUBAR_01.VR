@@ -2,9 +2,9 @@ if (!hasInterface) exitWith {};
 if (floor (random 3) == 0) exitWith {};
 params ["_pos", "_velocityVector", "_caliber"];
 if (_caliber < 0.8) exitWith {};
-if ((random [0.4, 1.7, 3.3]) > _caliber) exitWith {};
+if ((random [0.4, 1.6, 3.2]) > _caliber) exitWith {};
 
-_velocityVector = _velocityVector vectorMultiply (random [-0.08,0.05,0.11]);
+_velocityVector = _velocityVector vectorMultiply (random [-0.08,0.08,0.16]);
 private _randomSize = (random [0.5,1,2.5]);
 
 private _sparks = "#particlesource" createVehicleLocal _pos;

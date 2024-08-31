@@ -39,7 +39,7 @@ openMap [true,true];
             1000, // altitude
             500 // speed
         ] remoteExec ["BIS_fnc_fireSupportVirtual", 2];
-        sleep 18; // 
+        sleep 24; // 
         [
             _pos, // target
             "Sh_155mm_AMOS", // ammo
@@ -99,7 +99,7 @@ openMap [true,true];
             "andia\FUBAR\support\sound\artillery_hll_amb_25.ogg",
             "andia\FUBAR\support\sound\artillery_hll_amb_21.ogg"
         ];
-        sleep 18;
+        sleep 24;
         [[(getMissionPath _rndSound), 3, 1]] remoteExec ["playSoundUI", [0,-2] select isDedicated];
         //addCamShake [0.9,3.5,30];
         sleep 24;

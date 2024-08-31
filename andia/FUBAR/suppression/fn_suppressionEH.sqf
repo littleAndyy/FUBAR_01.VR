@@ -117,16 +117,9 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 }];
 _unit setVariable ["ANDIA_FUBAR_Suppression_ProjectileEH", _ANDIA_FUBAR_Suppression_ProjectileEH];
 
-if (isMultiplayer) then {
-    _unit addEventHandler ["MPRespawn", {
-        params ["_unit", "_corpse"];
-        [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
-    }];
-} else {
-    _unit addEventHandler ["Respawn", {
-        params ["_unit", "_corpse"];
-        [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
-    }];
-};
+_unit addEventHandler ["Respawn", {
+    params ["_unit", "_corpse"];
+    [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
+}];
 
 //(1.8*((190*1.5)*0.05))/20

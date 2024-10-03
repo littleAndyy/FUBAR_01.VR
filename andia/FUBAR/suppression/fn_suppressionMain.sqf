@@ -46,7 +46,7 @@ private _loop = [{
 	};
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0003));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
 		//systemChat "Suppression has been reduced.";
 	} else {
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.003));

@@ -52,6 +52,7 @@ class CfgFunctions
 			class impactPlayer {};
 			class SFX_largeImpactExpl {};
 			class impactGibs {};
+			class enhTracersEdit {};
 		};
 		class FUBAR_PvP_Frontline
 		{

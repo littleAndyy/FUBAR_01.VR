@@ -23,7 +23,7 @@ Must be spawned
 
 
 
-MGI_LIMITTRACERS = TRUE;
+MGI_LIMITTRACERS = FALSE;
 MGI_FORCESOMETRACERS = 1;
 
 fn_tracerLights = compileFinal "
@@ -32,18 +32,31 @@ fn_tracerLights = compileFinal "
   comment ""_light lightAttachObject [_projectile,[0,-0.5,0]]"";
   _light setLightColor _sideColor;
   _light setLightAmbient _sideColorAmbient;
-  _light setLightIntensity (if (sunOrMoon > 0.5) then [{30000},{100}]);
+  _light setLightIntensity (if (sunOrMoon > 0.5) then [{50000},{200}]);
   _light setLightDayLight true;
   _light setLightUseFlare true;
-  _light setLightFlareSize .4;
-  _light setLightFlareMaxDistance 2000;
-  [_light,_projectile] spawn {
-    params ['_light','_projectile'];
-    waitUntil {uiSleep 0.1; isNull _projectile};
-    LightDetachObject _light;
-    deleteVehicle _light;
-  };
+  _light setLightFlareSize 1.35;
+  _light setLightFlareMaxDistance 5000;
+  [{
+	params ['_args', '_handle'];
+	private _light = _args select 0;
+	private _projectile = _args select 1;
+	if (isNull _projectile) exitWith {
+		LightDetachObject _light;
+		deleteVehicle _light;
+		[_handle] call CBA_fnc_removePerFrameHandler;
+	};
+  }, 0.1, [_light, _projectile]] call CBA_fnc_addPerFrameHandler;
 ";
+
+/*
+  [_light,_projectile] spawn {
+	params ['_light','_projectile'];
+	waitUntil {uiSleep 0.1; isNull _projectile};
+	LightDetachObject _light;
+	deleteVehicle _light;
+  };
+*/
 
 // andy edited - only large caliber weaponry!
 While {TRUE} do {
@@ -51,44 +64,65 @@ While {TRUE} do {
 	private ["_unit","_sideColor","_sideColorAmbient"];
 
   {
-    _unit = _x;
-    _sideColor = if (side _unit isEqualTo WEST) then [{[235, 150, 150]},{if (side _unit isEqualTo EAST) then [{[150,255,150]},{[255,255,150]}]}];
-    _sideColorAmbient = if (side _unit isEqualTo WEST) then [{[2.35, 1.5, 1.5]},{if (side _unit isEqualTo EAST) then [{[1.5,2.55,1.5]},{[2.55,2.55,1.5]}]}];
-    _unit setVariable ["MGI_Tracers",[_sideColor,_sideColorAmbient]];
+	_unit = _x;
+	_sideColor = if (side _unit isEqualTo WEST) then [{[235, 150, 150]},{if (side _unit isEqualTo EAST) then [{[150,255,150]},{[255,255,150]}]}];
+	_sideColorAmbient = if (side _unit isEqualTo WEST) then [{[2.35, 1.5, 1.5]},{if (side _unit isEqualTo EAST) then [{[1.5,2.55,1.5]},{[2.55,2.55,1.5]}]}];
+	_unit setVariable ["MGI_Tracers",[_sideColor,_sideColorAmbient]];
 
-    _unit addEventHandler ["firedMan",{
-      params ["_unit", "_weapon", "_muzzle", "", "", "_magazine", "_projectile"];
-      if ((getNumber (configfile >> "CfgMagazines" >> _magazine >> "useAction") >= 3.2) && _weapon != "Throw" && _weapon != handgunWeapon _unit && getNumber (configfile >> "CfgMagazines" >> _magazine >> "useAction") != 1 && ["flare","smoke"] findIf {_x in toLowerANSI currentMagazine _unit} == -1) then {
-        private _tracerEnabled = FALSE;
-        if (MGI_LIMITTRACERS) then {
-          call {
-            if (_unit ammo _muzzle < ((getNumber (configFile >> "cfgMagazines" >> _magazine >> "lastRoundsTracer")) max 5)) exitWith {
-              _tracerEnabled = TRUE;
-            };
-            _tracersEvery = getNumber (configFile >> "cfgMagazines" >> _magazine >> "tracersEvery");
-            if (_tracersEvery == 0 and MGI_FORCESOMETRACERS >0) then {_tracersEvery = MGI_FORCESOMETRACERS};
-            if (_tracersEvery >0 && {((_unit ammo _muzzle)+1) mod _tracersEvery == 0}) then {
-              _tracerEnabled = TRUE;
-            };
-          };
-        } else {
-          _tracerEnabled = TRUE
-        };
-        private ["_sideColor","_sideColorAmbient"];
-        if (_tracerEnabled) then {
-          if (getText (configfile >> "CfgMagazines" >> _magazine >> "nameSound") != "missiles") then {
-            _sideColor = (_unit getVariable "MGI_Tracers") #0;
-            _sideColorAmbient = (_unit getVariable "MGI_Tracers") #1;
-          } else {
-            _sideColor = [255,255,255];
-            _sideColorAmbient = [2.55,2.55,2.55];
-          };
-          private _light = '#lightPoint' createVehicle (getPosVisual _projectile);
-          _light attachTo [_projectile];
-          [_light,_projectile,_sideColorAmbient,_sideColorAmbient] call fn_tracerLights;
-        };
-      };
-    }]
+	_unit addEventHandler ["firedMan",{
+	  params ["_unit", "_weapon", "_muzzle", "", "", "_magazine", "_projectile"];
+	  // systemChat str (getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "caliber")); // DEBUG
+	  if ((getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "caliber") >= 2.8 || (getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "caliber") >= 1 && (getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "explosive") >= 0.7))) && _weapon != "Throw" && _weapon != handgunWeapon _unit && getNumber (configfile >> "CfgMagazines" >> _magazine >> "useAction") != 1 && ["flare","smoke"] findIf {_x in toLowerANSI currentMagazine _unit} == -1) then {
+		private _tracerEnabled = FALSE;
+		if (MGI_LIMITTRACERS) then {
+		  call {
+			if (_unit ammo _muzzle < ((getNumber (configFile >> "cfgMagazines" >> _magazine >> "lastRoundsTracer")) max 5)) exitWith {
+			  _tracerEnabled = TRUE;
+			};
+			_tracersEvery = getNumber (configFile >> "cfgMagazines" >> _magazine >> "tracersEvery");
+			if (_tracersEvery == 0 and MGI_FORCESOMETRACERS >0) then {_tracersEvery = MGI_FORCESOMETRACERS};
+			if (_tracersEvery >0 && {((_unit ammo _muzzle)+1) mod _tracersEvery == 0}) then {
+			  _tracerEnabled = TRUE;
+			};
+		  };
+		} else {
+		  _tracerEnabled = TRUE
+		};
+		private ["_sideColor","_sideColorAmbient"];
+		if (_tracerEnabled) then {
+		  if (getText (configfile >> "CfgMagazines" >> _magazine >> "nameSound") != "missiles") then {
+			_sideColor = (_unit getVariable "MGI_Tracers") #0;
+			_sideColorAmbient = (_unit getVariable "MGI_Tracers") #1;
+		  } else {
+			_sideColor = [255,255,255];
+			_sideColorAmbient = [2.55,2.55,2.55];
+		  };
+		  /*// andy double check if ammo has red or green in its name !!
+		  if (((typeOf _projectile) find "Red") != -1) then {
+			_sideColor = [235, 150, 150];
+			_sideColorAmbient = [2.35, 1.5, 1.5];
+		  };
+		  if (((typeOf _projectile) find "Green") != -1) then {
+			_sideColor = [150,255,150];
+			_sideColorAmbient = [1.5,2.55,1.5];
+		  };*/
+
+		  // force orange tracer for all
+		  _sideColor = [255,140,0];
+		  _sideColorAmbient = [2.55,1.4,0];
+
+		  /*// ANDY EDIT BELOW (: CORRECT TRACER COLOR GUARANTEED!!!
+		  // it doesn't work... it wouldve worked but.. tracercolor is a redundant setting that arma 3 just left in...
+		  private _tracerArray = getArray (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "tracerColorR");
+		  _sideColor = (_tracerArray apply { _x * 255 }) select [0, 3];
+		  _sideColorAmbient = (_tracerArray apply { _x * 2.55 }) select [0, 3];
+		  */
+		  private _light = '#lightPoint' createVehicle (getPosVisual _projectile);
+		  _light attachTo [_projectile];
+		  [_light,_projectile,_sideColorAmbient,_sideColorAmbient] call fn_tracerLights;
+		};
+	  };
+	}]
   } forEach _allUnits;
   uisleep 3;
 };

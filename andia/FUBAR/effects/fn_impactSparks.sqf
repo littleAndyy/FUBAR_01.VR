@@ -1,6 +1,7 @@
 if (!hasInterface) exitWith {};
 if (floor (random 3) == 0) exitWith {};
 params ["_pos", "_velocityVector", "_caliber"];
+
 if (_caliber < 0.8) exitWith {};
 if ((random [0.4, 1.6, 3.2]) > _caliber) exitWith {};
 

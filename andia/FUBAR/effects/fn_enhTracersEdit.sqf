@@ -32,7 +32,7 @@ fn_tracerLights = compileFinal "
   comment ""_light lightAttachObject [_projectile,[0,-0.5,0]]"";
   _light setLightColor _sideColor;
   _light setLightAmbient _sideColorAmbient;
-  _light setLightIntensity (if (sunOrMoon > 0.5) then [{50000},{200}]);
+  _light setLightIntensity (if (sunOrMoon > 0.5) then [{23000},{100}]);
   _light setLightDayLight true;
   _light setLightUseFlare true;
   _light setLightFlareSize 1.35;
@@ -41,12 +41,12 @@ fn_tracerLights = compileFinal "
 	params ['_args', '_handle'];
 	private _light = _args select 0;
 	private _projectile = _args select 1;
-	if (isNull _projectile) exitWith {
+	if (isNull _projectile || (speed _projectile <= 10) || (speed _light <= 10)) exitWith {
 		LightDetachObject _light;
 		deleteVehicle _light;
 		[_handle] call CBA_fnc_removePerFrameHandler;
 	};
-  }, 0.1, [_light, _projectile]] call CBA_fnc_addPerFrameHandler;
+  }, 0.2, [_light, _projectile]] call CBA_fnc_addPerFrameHandler;
 ";
 
 /*

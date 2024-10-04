@@ -1,12 +1,12 @@
 params ["_pos", "_velocity"];
 
 _velocity = _velocity vectorMultiply (random [0.03,0.08,0.12]);
-private _rndSize = (random [2,2.5,2.8]);
+private _rndSize = (random [2,2.5,3.5]);
 
 private _gibs = "#particlesource" createVehicleLocal _pos;
 _gibs setParticleCircle [0, [0, 0, 0]];
 _gibs setParticleRandom [0, [0.25, 0.25, 0], [3, 3, 5], 0, 0.25, [0, 0, 0, 0.1], 0, 0];
-_gibs setParticleParams [["\A3\data_f\ParticleEffects\Universal\Meat_ca.p3d", 1, 0, 1], "", "SpaceObject", 0.5, 15, [0, 0, 0.5], _velocity, 0.5, 50, 7.9, 0.075, [_rndSize, _rndSize, _rndSize], [[0.1, 0.1, 0.1, 1], [0.25, 0.25, 0.25, 0.5], [0.5, 0.5, 0.5, 0]], [0.08], 1, 0, "", "", _gibs,0,true,0.1];
+_gibs setParticleParams [["\A3\data_f\ParticleEffects\Universal\Meat_ca.p3d", 1, 0, 1], "", "SpaceObject", 0.5, 10, [0, 0, 0.5], _velocity, 0.5, 750, 7.9, 0.075, [_rndSize, _rndSize, _rndSize, 0], [[0.1, 0.1, 0.1, 1], [0.25, 0.25, 0.25, 0.5], [0.5, 0.5, 0.5, 0]], [0.08], 1, 0, "", "", _gibs,0,true,0.1];
 _gibs setDropInterval 0.01;
 
 private _blood_01 = "#particlesource" createVehicleLocal _pos;

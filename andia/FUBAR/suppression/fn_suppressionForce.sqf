@@ -8,8 +8,18 @@ private _force = _directionVector vectorMultiply (_size * 0.05);
 _unit addForce [_force, _hitPos];
 
 [{
-    if (alive (_this#0)) then {
-        (_this#0) setUnconscious false;
+    if (!isNil "ace_medical_fnc_setUnconscious") then {
+        [(_this#0), true, (random [3,7,14]), true] call ace_medical_fnc_setUnconscious;
+    };
+}, [_unit], 0.1] call CBA_fnc_waitAndExecute;
+
+[{
+    if (!isNil "ace_medical_fnc_setUnconscious") then {
+        //[player, false, 3, true] call ace_medical_fnc_setUnconscious;
+    } else {
+        if (alive (_this#0)) then {
+            (_this#0) setUnconscious false;
+        };
     };
 }, [_unit], 7.5] call CBA_fnc_waitAndExecute;
 

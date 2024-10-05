@@ -20,9 +20,9 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 			params ["_unit"];
 			_unit setVariable ["ANDIA_FUBAR_Suppressed", false];
 		},
-		[_unit], (0.15*_suppressionValue)] call CBA_fnc_waitAndExecute;
+		[_unit], (0.18*_suppressionValue)] call CBA_fnc_waitAndExecute;
 	},
-	[_unit], 1.2] call CBA_fnc_waitAndExecute;
+	[_unit], 1.3] call CBA_fnc_waitAndExecute;
 };
 
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {

@@ -49,7 +49,7 @@ private _loop = [{
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
 		//systemChat "Suppression has been reduced.";
 	} else {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.003));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0025));
 		//systemChat "Suppression normalised.";
 	};
 	_unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppressionValue];

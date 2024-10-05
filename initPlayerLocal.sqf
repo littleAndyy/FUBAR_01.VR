@@ -8,6 +8,7 @@ sleep 1;
 [player] call andia_fnc_impactPlayer;
 //[] call andia_fnc_grenadeDust;
 [] spawn andia_fnc_enhTracersEdit;
+player setAnimSpeedCoef 0.85;
 
 private _supportRadioMortar = [player,"andia_mortar_support"] call BIS_fnc_addCommMenuItem;
 //private _supportRadioGrad = [player,"andia_grad_support"] call BIS_fnc_addCommMenuItem;

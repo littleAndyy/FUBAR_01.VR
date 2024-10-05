@@ -1,4 +1,4 @@
-params ["_obj", ["_isArmed", false]];
+params ["_obj", ["_isArmed", false], ["_placeOnGround", true]];
 
 if (isNil {_obj getVariable "andia_FL_cache_marker"}) then {
     private _marker = createMarker [(format ["andia_FL_cache_marker%1", random 99999]), getPosATL _obj];
@@ -8,8 +8,10 @@ if (isNil {_obj getVariable "andia_FL_cache_marker"}) then {
     _obj setVariable ["andia_FL_cache_marker", _marker, true];
 };
 
-_obj setVectorUp surfaceNormal (getPosATL _obj); 
-_obj setVehiclePosition [getPos _obj,[],0,"none"];
+if (_placeOnGround) then {
+    _obj setVectorUp surfaceNormal (getPosATL _obj); 
+    _obj setVehiclePosition [getPos _obj,[],0,"none"];
+};
 
 private _duration = 5; // action duration
 

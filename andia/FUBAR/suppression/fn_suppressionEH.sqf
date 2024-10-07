@@ -70,7 +70,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         private _distance = (_unit distance (ASLToATL _pos));
         //hintSilent format ["Size %1, Explosion at %2, distance from %3: %4", _size, _pos, player, _distance];
 
-        [(ASLtoATL _pos), _size, _velocity] call andia_fnc_explCloseFX;
+        [(ASLtoATL _pos), _size, _velocity] remoteExecCall ["andia_fnc_explCloseFX", _unit];
         if (_size > 2970) then {
             [_pos] call andia_fnc_SFX_largeImpactExpl;
         };

@@ -29,8 +29,8 @@ private _tinnitus = playSoundUI [(getMissionPath "andia\fubar\suppression\sfx_ti
 _unit setVariable ["ANDIA_FUBAR_SuppressionTinnitus", _tinnitus];*/
 
 private _soundVolume = (1 - (_suppressionValue * 0.05));
-if (_soundVolume <= 0) then {
-	_soundVolume = 0;
+if (_soundVolume <= 0.01) then {
+	_soundVolume = 0.01;
 };
 0 fadeSound _soundVolume;
 0 fadeMusic _soundVolume;

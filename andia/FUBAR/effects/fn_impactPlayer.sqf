@@ -10,8 +10,8 @@ _unit addEventHandler ["HitPart", {
     private _chance = if (_caliber > 2) then { 1 } else { _caliber / 2 };
     if (random 1 < _chance) then {
         if (_isDirect == true && _speed > 330 && _caliber > 0.8) then {
-            systemChat str "Player ragdolled by fast projectile!"; // DEBUG
-            systemChat str _selection; // DEBUG
+            //systemChat str "Player ragdolled by fast projectile!"; // DEBUG
+            //systemChat str _selection; // DEBUG
             private _hitPos = (_target modelToWorldWorld (_target selectionPosition (_selection#0)));
             private _directionVector = (_position vectorFromTo _hitPos);
             private _force = _directionVector vectorMultiply (_caliber*(random[100,150,200]));
@@ -23,7 +23,7 @@ _unit addEventHandler ["HitPart", {
                     _x = -1000;
                 };
             } forEach _force;
-            systemChat format ["%1 km/h, _velocity: %2, _force: %3, _caliber: %4", _speed, _velocity, _force, _caliber]; // DEBUG
+            //systemChat format ["%1 km/h, _velocity: %2, _force: %3, _caliber: %4", _speed, _velocity, _force, _caliber]; // DEBUG
             _target addForce [_force, _hitPos];
             [{
                 if (!isNil "ace_medical_fnc_setUnconscious") then {

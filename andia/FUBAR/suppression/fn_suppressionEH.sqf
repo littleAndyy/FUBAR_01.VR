@@ -31,7 +31,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
 
         _projectileClass = typeOf _projectile;
         private _caliberSize = getNumber (configFile >> "CfgAmmo" >> _projectileClass >> "caliber");
-        //systemChat format ["_projectile: %1, caliber: %2", _projectile, _caliberSize];
+        //systemChat format ["_projectile: %1, caliber: %2", _projectile, _caliberSize]; // DEBUG
 
         private _unit = player;
         private _distance = (_unit distance (ASLToATL _pos));

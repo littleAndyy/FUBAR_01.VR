@@ -28,7 +28,7 @@ if (_suppressionValue <= 0.05) exitWith {};
 private _tinnitus = playSoundUI [(getMissionPath "andia\fubar\suppression\sfx_tinnitus_short.ogg"), (0.15*_suppressionValue), 1];
 _unit setVariable ["ANDIA_FUBAR_SuppressionTinnitus", _tinnitus];*/
 
-private _soundVolume = (1 - (_suppressionValue * 0.05));
+private _soundVolume = (1 - (_suppressionValue * 0.04));
 if (_soundVolume <= 0.01) then {
 	_soundVolume = 0.01;
 };

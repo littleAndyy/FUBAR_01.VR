@@ -33,7 +33,7 @@ if (_soundVolume <= 0.01) then {
 	_soundVolume = 0.01;
 };
 0 fadeSound _soundVolume;
-0 fadeMusic _soundVolume;
+//0 fadeMusic _soundVolume;
 0 fadeEnvironment _soundVolume;
 
 

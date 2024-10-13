@@ -59,18 +59,24 @@ private _blur = (_FXArray#0);
 private _vignette = (_FXArray#1);
 private _grain = (_FXArray#2);
 private _colour = (_FXArray#3);
-private _sway = getCustomAimCoef _unit;
+//private _sway = getCustomAimCoef _unit;
 
 if (_suppressionValue > 5) then {
-	// only heavy suppression (>5) will apply blur & sway
+	// only heavy suppression (>5) will apply blur
 	// 0.05*(10-5) = 0.25
-	player setCustomAimCoef (_sway + (0.2 * (_suppressionValue - 5)));
 	_blur ppEffectAdjust [0.05 * (_suppressionValue - 5)]; 
 	_blur ppEffectCommit 1;
 } else {
-	player setCustomAimCoef 1;
 	_blur ppEffectAdjust [0];
 	_blur ppEffectCommit 1;
+};
+
+if (_suppressionValue > 2.5) then {
+	// 1 + (0.2 * (10 - 2.5) = 2.5
+	// suppression value at 10 = 2.5x sway
+	player setCustomAimCoef (1 + (0.2 * (_suppressionValue - 2.5)));
+} else {
+	player setCustomAimCoef 1;
 };
 
 private _vignetteValue = (1 - (_suppressionValue * 0.05));

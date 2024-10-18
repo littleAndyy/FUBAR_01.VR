@@ -10,8 +10,12 @@ removeMissionEventHandler ["ProjectileCreated", (_corpse getVariable "ANDIA_FUBA
     waitUntil { sleep 1.5; (!isNull player) };
     hintSilent format ["Executed 'andia_fnc_suppressionEH' on respawn for %1!", (name _unit)];
     diag_log format ["Executed 'andia_fnc_suppressionEH' on respawn for %1!", (name _unit)];
+    
     sleep 0.2;
-    _unit call andia_fnc_suppressionEH;
+    [_unit] remoteExec ["andia_fnc_suppressionEH", _unit];
+    
+    sleep 0.2;
+    [_unit] remoteExec ["andia_fnc_impactPlayer", _unit];
 };
 
 // reverted ...

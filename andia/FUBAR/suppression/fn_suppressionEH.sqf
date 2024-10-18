@@ -119,7 +119,7 @@ _unit setVariable ["ANDIA_FUBAR_Suppression_ProjectileEH", _ANDIA_FUBAR_Suppress
 
 _unit addEventHandler ["Respawn", {
     params ["_unit", "_corpse"];
-    [_unit, _corpse, _thisEvent, _thisEventHandler] call andia_fnc_suppressionRespawn;
+    [_unit, _corpse, _thisEvent, _thisEventHandler] remoteExec ["andia_fnc_suppressionRespawn", _unit]; // remoteExec fix? try player instead of _unit
 }];
 
 //(1.8*((190*1.5)*0.05))/20

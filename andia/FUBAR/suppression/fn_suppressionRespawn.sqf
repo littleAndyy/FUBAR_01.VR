@@ -1,4 +1,4 @@
-if (!hasInterface) exitWith {};
+//if (!hasInterface) exitWith {};
 // TODO: Still broken... :(
 params ["_unit", "_corpse", "_eventHandlerType", "_eventHandlerID"];
 _corpse removeEventHandler [_eventHandlerType, _eventHandlerID];

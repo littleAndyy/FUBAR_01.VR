@@ -5,7 +5,7 @@ respawnDialog = 1;
 respawnTemplates[] = {"Counter","MenuPosition", "Spectator"};
 
 reviveMode = 1; // 0 = Disabled, 1 = Enabled, 2 = controlled by player attributes
-reviveUnconsciousStateMode = 1; // 0 = Basic, 1 = Advanced, 2 = Realistic
+reviveUnconsciousStateMode = 0; // 0 = Basic, 1 = Advanced, 2 = Realistic
 reviveRequiredTrait = 0; // 0 = None, 1 = Medic Only
 reviveRequiredItems = 2; // 0 = None, 1 = Medikit, 2 = Medikit or FirstAidKit
 reviveRequiredItemsFakConsumed = 1;

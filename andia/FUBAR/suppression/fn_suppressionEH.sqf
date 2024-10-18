@@ -37,7 +37,7 @@ private _ANDIA_FUBAR_Suppression_ProjectileEH = addMissionEventHandler ["Project
         private _distance = (_unit distance (ASLToATL _pos));
         if (_distance <= 50) then {
             private _suppression = (
-                (_unit getVariable "ANDIA_FUBAR_SuppressionValue") + ((0.8 * _caliberSize) / (_distance/2.0))
+                (_unit getVariable "ANDIA_FUBAR_SuppressionValue") + ((0.9 * _caliberSize) / (_distance/2.0))
             );
             _unit setVariable ["ANDIA_FUBAR_SuppressionValue", _suppression];
             [_unit] call andia_fnc_suppressionMain;

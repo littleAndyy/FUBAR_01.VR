@@ -1,20 +1,26 @@
 params ["_unit"];
 
-_unit addEventHandler ["HitPart", {
+private _ANDIA_FUBAR_HitPartEH_Impact = (_unit addEventHandler ["HitPart", {
 	(_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
     [(ASLtoATL _position), _velocity] remoteExecCall ["andia_fnc_impactGibs", [0,-2] select isDedicated];
 
     private _speed = (vectorMagnitude _velocity) * 3.6;
     private _caliber = getNumber (configFile >> "CfgAmmo" >> (typeOf _projectile) >> "caliber");
 
-    private _chance = if (_caliber > 2) then { 1 } else { _caliber / 2 };
+    private _chance = 0;
+    if (_caliber > 2) then {
+        _chance = 1 
+    } else { 
+        _chance = (_caliber / 2) 
+    };
+
     if (random 1 < _chance) then {
         if (_isDirect == true && _speed > 330 && _caliber > 0.8) then {
             //systemChat str "Player ragdolled by fast projectile!"; // DEBUG
             //systemChat str _selection; // DEBUG
             private _hitPos = (_target modelToWorldWorld (_target selectionPosition (_selection#0)));
             private _directionVector = (_position vectorFromTo _hitPos);
-            private _force = _directionVector vectorMultiply (_caliber*(random[100,150,200]));
+            private _force = _directionVector vectorMultiply (_caliber*(random[125,150,200]));
             {
                 if (_x > 1000) then {
                     _x = 1000;
@@ -44,4 +50,5 @@ _unit addEventHandler ["HitPart", {
             }, [_target], (random [3,6,12])] call CBA_fnc_waitAndExecute;
         };
     };
-}];
+}]);
+_unit setVariable ["ANDIA_FUBAR_HitPartEH_Impact", _ANDIA_FUBAR_HitPartEH_Impact];

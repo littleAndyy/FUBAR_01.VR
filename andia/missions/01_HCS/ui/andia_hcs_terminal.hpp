@@ -2,7 +2,7 @@
 class andia_terminal
 {
 	idd = 3499;
-	onUnload = "closeDialog 3499;"
+	onUnload = "closeDialog 3499";
 	class ControlsBackground
 	{
 		

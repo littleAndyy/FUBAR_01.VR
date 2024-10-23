@@ -10,6 +10,7 @@ if (isNil {_unit getVariable "ANDIA_FUBAR_Deafness"}) then {
 	_unit setVariable ["ANDIA_FUBAR_Deafness", true];
 };
 
+// TODO: investigate setSuppression and getSuppression ?
 private _suppressionValue = _unit getVariable "ANDIA_FUBAR_SuppressionValue";
 _unit setVariable ["ANDIA_FUBAR_Suppressed", true];
 if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
@@ -22,7 +23,7 @@ if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
 		},
 		[_unit], (0.15*_suppressionValue)] call CBA_fnc_waitAndExecute;
 	},
-	[_unit], 1.2] call CBA_fnc_waitAndExecute;
+	[_unit], 0.9] call CBA_fnc_waitAndExecute;
 };
 
 if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionLoop"}) exitWith {
@@ -39,14 +40,14 @@ private _loop = [{
 	if (_suppressionValue >= 30.00) then {
 		_suppressionValue = 30.00;
 	};
-	if ((_suppressionValue <= 0.1)) exitWith {
+	if ((_suppressionValue <= 0.1) || !(alive _unit)) exitWith {
 		private _loopPFH = _unit getVariable "ANDIA_FUBAR_SuppressionLoop";
 		_unit setVariable ["ANDIA_FUBAR_SuppressionLoop", nil];
 		[_loopPFH] call CBA_fnc_removePerFrameHandler;
 	};
 	
 	if ((_unit getVariable "ANDIA_FUBAR_Suppressed") == true) then {
-		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.0002));
+		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.00025));
 		//systemChat "Suppression has been reduced.";
 	} else {
 		_suppressionValue = (_suppressionValue - (_suppressionValue * 0.003));

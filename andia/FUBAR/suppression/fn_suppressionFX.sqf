@@ -1,5 +1,5 @@
 if (!hasInterface) exitWith {};
-params ["_unit", ["_suppressionValue", 0]];
+params ["_unit", ["_suppressionValue", 0.01]];
 
 
 if (isNil {_unit getVariable "ANDIA_FUBAR_SuppressionFX_Array"}) then {
@@ -18,7 +18,7 @@ if (isNil {_unit getVariable "ANDIA_FUBAR_SuppressionFX_Array"}) then {
 	_unit setVariable ["ANDIA_FUBAR_SuppressionFX_Array", [_blur, _vignette, _grain, _colour]];
 };
 
-if (_suppressionValue <= 0.05) exitWith {};
+//if (_suppressionValue <= 0.05) exitWith {}; // likely prevented it from resetting after respawn
 
 /*if (!isNil {_unit getVariable "ANDIA_FUBAR_SuppressionTinnitus"}) then {
 	private _tinnitus = (_unit getVariable "ANDIA_FUBAR_SuppressionTinnitus");
@@ -63,18 +63,18 @@ private _colour = (_FXArray#3);
 
 if (_suppressionValue > 5) then {
 	// only heavy suppression (>5) will apply blur
-	// 0.05*(10-5) = 0.25
-	_blur ppEffectAdjust [0.05 * (_suppressionValue - 5)]; 
-	_blur ppEffectCommit 1;
+	// 0.04*(10-5) = 0.2
+	_blur ppEffectAdjust [0.04 * (_suppressionValue - 5)]; 
+	_blur ppEffectCommit 0.5;
 } else {
 	_blur ppEffectAdjust [0];
-	_blur ppEffectCommit 1;
+	_blur ppEffectCommit 0.5;
 };
 
 if (_suppressionValue > 2.5) then {
-	// 1 + (0.2 * (10 - 2.5) = 2.5
-	// suppression value at 10 = 2.5x sway
-	player setCustomAimCoef (1 + (0.2 * (_suppressionValue - 2.5)));
+	// 1 + (2.0 * (10 - 2.5) = 2.5
+	// suppression value at 10 = 56 sway
+	player setCustomAimCoef (1 + (2.0 * (_suppressionValue - 2.5)));
 } else {
 	player setCustomAimCoef 1;
 };

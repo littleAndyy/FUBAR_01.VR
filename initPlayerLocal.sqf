@@ -5,10 +5,11 @@ sleep 1;
 
 //[player] call andia_fnc_FL_deathInit; // ! DO NOT USE
 [player] call andia_fnc_suppressionEH;
+[player] call andia_fnc_suppressionMEH;
 [player] call andia_fnc_impactPlayer;
 //[] call andia_fnc_grenadeDust;
 [] spawn andia_fnc_enhTracersEdit;
-player setAnimSpeedCoef 0.87;
+[player, 0.87] remoteExecCall ["setAnimSpeedCoef", 0, true];
 
 private _supportRadioMortar = [player,"andia_mortar_support"] call BIS_fnc_addCommMenuItem;
 //private _supportRadioGrad = [player,"andia_grad_support"] call BIS_fnc_addCommMenuItem;

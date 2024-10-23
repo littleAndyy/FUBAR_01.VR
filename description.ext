@@ -34,6 +34,7 @@ class CfgFunctions
 			file = "andia\FUBAR\suppression";
 			class suppressionMain {};
 			class suppressionEH {};
+			class suppressionMEH {};
 			class suppressionFX {};
 			class suppressionBreathing {};
 			class suppressionForce {};

@@ -13,13 +13,15 @@ if (_caliber >= 9) then {
 };
 private _randomSize = (random [0.8,1,2.5]) * _caliber;
 
-private _sparks = "#particlesource" createVehicleLocal _pos;
-_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,(0.5 + random 6.5),[0,0,0],_velocityVector,1,0.0088,0.0038,0.15,[(0.0125*_randomSize),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","","",0,false,0.31,[[45000,(random [20000,30000,45000]),(random [5000,10000,15000]),1000],[0,0,0,0]],[0,1,0]];
+private _sparks = createVehicleLocal ["#particlesource", (getPos player), [], 0, "CAN_COLLIDE"];
+_obj = createVehicleLocal ["Sign_Sphere25cm_F", _pos, [], 0, "CAN_COLLIDE"];
+_obj hideObject true;
+_sparks setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal.p3d",16,12,1,1],"","Billboard",1,(0.5 + random 6.5),[0,0,0],_velocityVector,1,0.0088,0.0038,0.15,[(0.0125*_randomSize),0],[[1,1,0.720384,-100],[0,0,0,0]],[1,0],3,1,"","",_obj,0,false,0.31,[[45000,(random [20000,30000,45000]),(random [5000,10000,15000]),1000],[0,0,0,0]],[0,1,0]];
 _sparks setParticleRandom [1,[0,0,0],[(19*(random [-0.5,1,2.5])),(19*(random [-0.5,1,2.5])),(19*(random [-0.5,1,2.5]))],3,1,[0,0,0,0],2,2,0,0];
 _sparks setParticleCircle [0,[1,1,1]];
 _sparks setDropInterval 0.002;
 
-private _light = "#lightpoint" createVehicleLocal _pos;
+private _light = createVehicleLocal ["#lightpoint", _pos, [], 0, "CAN_COLLIDE"];
 _light setLightColor [1, (random [0.6,0.8,1]), (random [0.1,0.3,0.6])];
 _light setLightIntensity (2.5*_caliber*_randomSize);
 _light setLightBrightness (0.5*_caliber*_randomSize);
@@ -27,13 +29,15 @@ _light setLightBrightness (0.5*_caliber*_randomSize);
 //systemChat format ["_brightness = %1", (0.01*(_size/2))];
 _light setLightAmbient [1, (random [0.6,0.8,1]), (random [0.1,0.3,0.6])];
 _light setLightDayLight true;
-//_light setLightFlareSize (0.01*(_caliber/2));
-//_light setLightFlareMaxDistance 3000;
-//_light setLightUseFlare false;
+_light setLightFlareSize (0.01*(_caliber/2));
+_light setLightFlareMaxDistance 3000;
+_light setLightUseFlare true;
 
 [{
     _light = (_this#0);
     _sparks = (_this#1);
+    _obj = (_this#2);
     deleteVehicle _light;
     deleteVehicle _sparks;
-}, [_light, _sparks], 0.1] call CBA_fnc_waitAndExecute;
+    deleteVehicle _obj;
+}, [_light, _sparks, _obj], 0.1] call CBA_fnc_waitAndExecute;

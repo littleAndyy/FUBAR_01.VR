@@ -96,8 +96,8 @@ if (_size >= 240) then {
     _explSmokeBig setDropInterval 0.0008;
 };
 
-private _shakeCoef = 1-((player distance _obj)/1400);
-addCamShake [3*(_shakeCoef^2), 1.5, 10];
+/*private _shakeCoef = 1-((player distance _obj)/1400);
+addCamShake [3*(_shakeCoef^2), 1.5, 10];*/ // somehow fix this
 
 [{
     _light = (_this#0);
